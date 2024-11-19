@@ -5,16 +5,13 @@ import logo from '../assets/logo.png'
 const Login = ({navigateToWelcome}) => {
     return(
         <SafeAreaView style={{ flex:1, backgroundColor: '#e8ecf4'}}>
-            {/*header*/}
-            <View style={styles.header}>
-                <Image
-                    source={logo}
-                    alt="Logo"
-                    style={styles.headerImg}
-                />
-
-                <Text style={styles.title}>Sign in</Text>
-                <Text style={styles.subtitle}>Welcome back!!</Text>
+          {/*header*/}
+          <View style={styles.header}>
+            <View style={styles.logoContainer}>
+              <Image source={logo} style={styles.logo} />
+            </View>
+              <Text style={styles.title}>Sign in</Text>
+              <Text style={styles.subtitle}>Welcome back!!</Text>
             </View>
 
             {/*form*/}
@@ -59,6 +56,8 @@ const Login = ({navigateToWelcome}) => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
       backgroundColor: '#e8ecf4',
       paddingHorizontal: 20,
     },
@@ -66,10 +65,16 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       marginVertical: 20,
     },
+    logoContainer: {
+      position: "absolute",
+      top: -5,
+      alignSelf: "center",
+      zIndex: 1,
+    },
     logo: {
-      width: 100,
-      height: 100,
-      marginBottom: 10,
+      width: 200,
+      height: 200,
+      marginBottom: 40,
     },
     title: {
       fontSize: 24,
@@ -83,7 +88,9 @@ const styles = StyleSheet.create({
       textAlign: 'center',
     },
     form: {
-      marginTop: 30,
+      marginTop: 100,
+      marginRight: 40,
+      marginLeft: 40,
     },
     inputContainer: {
       backgroundColor: '#fff',
@@ -92,6 +99,8 @@ const styles = StyleSheet.create({
       paddingHorizontal: 15,
       borderWidth: 1,
       borderColor: '#D32F2F',
+      marginRight: 60,
+      marginLeft: 60,
     },
     input: {
       height: 50,
@@ -102,7 +111,9 @@ const styles = StyleSheet.create({
       borderRadius: 25,
       paddingVertical: 15,
       alignItems: 'center',
-      marginTop: 20,
+      marginTop: 200,
+      marginRight: 200,
+      marginLeft: 200,
     },
     buttonText: {
       color: '#fff',

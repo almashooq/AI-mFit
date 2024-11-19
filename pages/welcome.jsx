@@ -1,6 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
-import { Video } from "expo-av";
+import { StyleSheet, Text, View, TouchableOpacity, Image, Button } from "react-native";
+import { Video } from 'expo-av';
 import welcomeBG from "../assets/welcomeBG.mp4";
 import logo from "../assets/logo.png";
 
@@ -12,21 +12,27 @@ const WelcomePage = ({ navigateToLogin, navigateToWork }) => {
         source={welcomeBG}
         style={styles.backgroundVideo}
         resizeMode="cover"
-        repeat
+        shouldPlay
+        isLooping
+        isMuted
+        rate={1.0}
+        pointerEvents="none"
       />
 
-      {/* Logo */}
-      <Image source={logo} style={styles.logo} />
+        {/* Logo */}
+        <View style={styles.logoContainer}>
+          <Image source={logo} style={styles.logo} />
+        </View>
 
-      {/* Buttons */}
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={navigateToWork}>
-          <Text style={styles.buttonText}>TRY AI’MFIT</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={navigateToLogin}>
-          <Text style={styles.buttonText}>LOG IN</Text>
-        </TouchableOpacity>
-      </View>
+        {/* Buttons */}
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button} onPress={navigateToWork}>
+            <Text style={styles.buttonText}>TRY AI’MFIT</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={navigateToLogin}>
+            <Text style={styles.buttonText}>LOG IN</Text>
+          </TouchableOpacity>
+        </View>
     </View>
   );
 };
@@ -44,9 +50,15 @@ const styles = StyleSheet.create({
       bottom: 0,
       right: 0,
     },
+    logoContainer: {
+      position: "absolute",
+      top: -5,
+      alignSelf: "center",
+      zIndex: 1,
+    },
     logo: {
-      width: 150,
-      height: 150,
+      width: 200,
+      height: 200,
       marginBottom: 20,
     },
     buttonContainer: {

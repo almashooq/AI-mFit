@@ -7,12 +7,13 @@ import Work from './pages/work'
 export default function App() {
   const [currentPage, setCurrentPage] = useState("Welcome");
 
+
   return (
     <View style={styles.container}>
       {currentPage === "Welcome" && (
         <WelcomePage
           navigateToLogin={() => setCurrentPage("Login")}
-          navigateToWork={() => setCurrentPage("Work")} // Pass navigateToWork
+          navigateToWork={() => setCurrentPage("Work")}
         />
       )}
       {currentPage === "Login" && (
