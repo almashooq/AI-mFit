@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button, SafeAreaView, Image, TextInput, TouchableOpacity } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import logo from '../assets/logo.png';
+import back from '../assets/arrow.png'
 
-const SignUp = () => {
+const SignUp = ({navigateToLogin}) => {
   const [image, setImage] = useState(null);
 
   const pickImage = async () => {
@@ -20,6 +21,12 @@ const SignUp = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.bubble} />
+       {/*Back*/}
+       <TouchableOpacity style={styles.backArrow} onPress={navigateToLogin}>
+            <Image source={back}/>
+          </TouchableOpacity>
+
       <View style={styles.header}>
         <Image source={logo} style={styles.logo} />
         <Text style={styles.title}>SIGN UP</Text>
@@ -52,25 +59,25 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: 20,
   },
   logo: {
     width: 200,
     height: 100,
-    marginBottom: 10,
+   // marginBottom: 5,
   },
   title: {
-    fontSize: 24,
+    fontSize: 34,
     fontWeight: 'bold',
     color: '#fff',
   },
   form: {
-    marginTop: 40,
+    marginTop: 10,
     paddingHorizontal: 20,
     flex: 1,
-    backgroundColor: '#fff',
-    borderTopLeftRadius: 50,
-    borderTopRightRadius: 50,
+    // backgroundColor: '#fff',
+    // borderTopLeftRadius: 50,
+    // borderTopRightRadius: 50,
     paddingVertical: 30,
     alignItems: 'center',
     zIndex:-1,
@@ -128,6 +135,24 @@ const styles = StyleSheet.create({
     color: '#D32F2F',
     fontWeight: 'bold',
   },
+  bubble: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: '80%',
+    backgroundColor: '#ffffff',
+    borderTopLeftRadius: 100,
+    borderTopRightRadius: 100,
+    zIndex: -1,
+  },
+  backArrow: {
+    position: "absolute",
+    paddingTop: 50,
+    paddingLeft: 20,
+    top: 0,
+    left: 0,
+}
 });
 
 export default SignUp;
