@@ -4,51 +4,55 @@ import logo from '../assets/logo.png'
 
 const Login = ({navigateToWelcome}) => {
     return(
-        <SafeAreaView style={{ flex:1, backgroundColor: '#e8ecf4'}}>
+        <SafeAreaView style={[styles.container]}>
+          <View style={styles.bubble} />
+
           {/*header*/}
           <View style={styles.header}>
-            <View style={styles.logoContainer}>
-              <Image source={logo} style={styles.logo} />
-            </View>
-              <Text style={styles.title}>Sign in</Text>
-              <Text style={styles.subtitle}>Welcome back!!</Text>
-            </View>
+            <Image source={logo} style={styles.logo} />
+            <Text style={styles.title}>LOG IN</Text>
+          </View>
 
-            {/*form*/}
+          <View style={styles.contentContainer}>
+            {/*form*/} 
             <View style={styles.form}>
-                <View style={styles.inputContainer}>
-                    <TextInput style={styles.input} placeholder="Username/Email" placeholderTextColor="#999" />
-                </View>
-                <View style={styles.inputContainer}>
-                    <TextInput
-                    style={styles.input}
-                    placeholder="Password"
-                    placeholderTextColor="#999"
-                    secureTextEntry
-                    />            
-                </View>
+            <Text style={styles.subtitle}>ENTER YOUR CREDENTIAL TO LOGIN</Text>
+              <View style={styles.inputContainer}>
+                <TextInput 
+                  style={styles.input} 
+                  placeholder="Username/Email" 
+                  placeholderTextColor="#999" />
+              </View>
+              <View style={styles.inputContainer}>
+                <TextInput
+                  style={styles.input}
+                  placeholder="Password"
+                  placeholderTextColor="#999"
+                  secureTextEntry
+                />            
+              </View>
             </View>
 
             {/*login button*/}
             <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>LOG IN</Text>
+              <Text style={styles.buttonText}>LOG IN</Text>
             </TouchableOpacity>
 
             {/* Links */}
             <View style={styles.linksContainer}>
-                <Text style={styles.linkText}>
-                    Forgot your password? <Text style={styles.link}>Reset Password</Text>
-                </Text>
-                <Text style={styles.linkText}>
-                    Not a member yet? <Text style={styles.link}>Register Now</Text>
-                </Text>
+              <Text style={styles.linkText}>
+                Forgot your password? <Text style={styles.link}>Reset Password</Text>
+              </Text>
+              <Text style={styles.linkText}>
+                Not a member yet? <Text style={styles.link}>Register Now</Text>
+              </Text>
             </View>
 
             {/* Back to Welcome Button */}
             <TouchableOpacity onPress={navigateToWelcome} style={styles.backButton}>
-                <Text style={styles.backButtonText}>Back to Welcome</Text>
+              <Text style={styles.backButtonText}>Back to Welcome</Text>
             </TouchableOpacity>
-
+          </View>
         </SafeAreaView>
     );
 };
@@ -58,34 +62,33 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#e8ecf4',
-      paddingHorizontal: 20,
+      backgroundColor: '#797979',
+    },
+    contentContainer: {
+      paddingTop: 100,
     },
     header: {
       alignItems: 'center',
-      marginVertical: 20,
-    },
-    logoContainer: {
       position: "absolute",
-      top: -5,
-      alignSelf: "center",
-      zIndex: 1,
+      top: 150,
     },
     logo: {
       width: 200,
-      height: 200,
-      marginBottom: 40,
+      height: 100,
     },
     title: {
-      fontSize: 24,
+      fontSize: 34,
       fontWeight: 'bold',
-      color: '#333',
-      marginBottom: 5,
+      color: 'white',
+      marginTop: 50,
+      marginBottom: 50,
     },
     subtitle: {
-      fontSize: 16,
-      color: '#666',
+      fontSize: 19,
+      paddingBottom: 40,
+      color: 'black',
       textAlign: 'center',
+      fontWeight: 'bold'
     },
     form: {
       marginTop: 100,
@@ -99,8 +102,8 @@ const styles = StyleSheet.create({
       paddingHorizontal: 15,
       borderWidth: 1,
       borderColor: '#D32F2F',
-      marginRight: 60,
-      marginLeft: 60,
+      marginRight: 2,
+      marginLeft: 2,
     },
     input: {
       height: 50,
@@ -111,12 +114,11 @@ const styles = StyleSheet.create({
       borderRadius: 25,
       paddingVertical: 15,
       alignItems: 'center',
-      marginTop: 200,
-      marginRight: 200,
-      marginLeft: 200,
+      marginTop: 8,
+      marginHorizontal: 120,
     },
     buttonText: {
-      color: '#fff',
+      color: 'white',
       fontSize: 18,
       fontWeight: 'bold',
     },
@@ -139,6 +141,17 @@ const styles = StyleSheet.create({
     backButtonText: {
       color: '#2979FF',
       fontSize: 16,
+    },
+    bubble: {
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      right: 0,
+      height: '65%',
+      backgroundColor: '#ffffff',
+      borderTopLeftRadius: 300,
+      borderTopRightRadius: 300,
+      zIndex: -1,
     },
   });
 

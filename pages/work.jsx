@@ -6,6 +6,7 @@ import { Button } from 'react-native';
 import logo from '../assets/logo.png'
 
 
+
 const API_KEY = "dfa9144b-df2c-4ba2-b2ba-fe94be6e8d6e";
 const POSETRACKER_API = "https://app.posetracker.com/pose_tracker/tracking";
 const { width, height } = Dimensions.get('window');
