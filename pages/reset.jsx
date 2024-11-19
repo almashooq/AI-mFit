@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaView, View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 import logo from '../assets/logo.png'
 
-const Login = ({navigateToWelcome , navigateToReset}) => {
+const Reset = ({navigateToWelcome}) => {
     return(
         <SafeAreaView style={[styles.container]}>
           <View style={styles.bubble} />
@@ -10,57 +10,26 @@ const Login = ({navigateToWelcome , navigateToReset}) => {
           {/*header*/}
           <View style={styles.header}>
             <Image source={logo} style={styles.logo} />
-            <Text style={styles.title}>LOG IN</Text>
+            <Text style={styles.title}>CHANGE PASSWORD</Text>
           </View>
 
           <View style={styles.contentContainer}>
             {/*form*/} 
             <View style={styles.form}>
-            <Text style={styles.subtitle}>ENTER YOUR CREDENTIAL TO LOGIN</Text>
+            <Text style={styles.subtitle}>Enter your email address and we will send you a pasword reset link</Text>
               <View style={styles.inputContainer}>
                 <TextInput 
                   style={styles.input} 
-                  placeholder="Username/Email" 
+                  placeholder="Email" 
                   placeholderTextColor="#999" />
               </View>
-              <View style={styles.inputContainer}>
-                <TextInput
-                  style={styles.input}
-                  placeholder="Password"
-                  placeholderTextColor="#999"
-                  secureTextEntry
-                />            
-              </View>
             </View>
 
-            {/*login button*/}
+            {/*Resset button*/}
             <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>LOG IN</Text>
+              <Text style={styles.buttonText}>RESET</Text>
             </TouchableOpacity>
-
-            {/* Links */}
-            <View style={styles.linksContainer}> 
-                {/* Reset */}
-                <Text style={styles.linkText}>
-                  Forgot your password? 
-                  <TouchableOpacity onPress={navigateToReset}>
-                    <Text style={styles.link}>Reset Password</Text>
-                  </TouchableOpacity>
-                </Text>
-                {/* Register */}
-                <Text style={styles.linkText}>
-                  Not a member yet? 
-                  <TouchableOpacity /*onPress={}*/>
-                    <Text style={styles.link}>Register Now</Text>
-                  </TouchableOpacity>
-                </Text>
-            </View>
-
-            {/* Back to Welcome Button */}
-            <TouchableOpacity onPress={navigateToWelcome} style={styles.backButton}>
-              <Text style={styles.backButtonText}>Back to Welcome</Text>
-            </TouchableOpacity>
-          </View>
+        </View>
         </SafeAreaView>
     );
 };
@@ -166,6 +135,4 @@ const styles = StyleSheet.create({
 
 
 
-export default Login;
-
-
+export default Reset;

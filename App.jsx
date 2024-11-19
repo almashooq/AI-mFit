@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import WelcomePage from "./pages/welcome";
 import Login from "./pages/login";
-import Work from './pages/work'
+import Work from "./pages/work";
+import Reset from "./pages/reset";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("Welcome");
@@ -17,10 +18,16 @@ export default function App() {
         />
       )}
       {currentPage === "Login" && (
-        <Login navigateToWelcome={() => setCurrentPage("Welcome")} />
+        <Login 
+          navigateToWelcome={() => setCurrentPage("Welcome")} 
+          navigateToReset={() => setCurrentPage("Reset")}
+        />
       )}
       {currentPage === "Work" && (
         <Work navigateToWelcome={() => setCurrentPage("Welcome")} />
+      )}
+      {currentPage === "Reset" && (
+        <Reset navigateToLogin={() => setCurrentPage("Login")} />
       )}
     </View>
   );
