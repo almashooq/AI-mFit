@@ -4,6 +4,7 @@ import WelcomePage from "./pages/welcome";
 import Login from "./pages/login";
 import Work from "./pages/work";
 import Reset from "./pages/reset";
+import SignUp from './pages/SignUp';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("Welcome");
@@ -18,9 +19,11 @@ export default function App() {
         />
       )}
       {currentPage === "Login" && (
+
         <Login 
           navigateToWelcome={() => setCurrentPage("Welcome")} 
           navigateToReset={() => setCurrentPage("Reset")}
+          navigateToSaignUp = {()=> setCurrentPage("SignUp")} 
         />
       )}
       {currentPage === "Work" && (
@@ -28,6 +31,9 @@ export default function App() {
       )}
       {currentPage === "Reset" && (
         <Reset navigateToLogin={() => setCurrentPage("Login")} />
+      )}
+      {currentPage === "SignUp" && (
+        <SignUp />
       )}
     </View>
   );

@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaView, View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 import logo from '../assets/logo.png'
 
-const Login = ({navigateToWelcome , navigateToReset}) => {
+const Login = ({navigateToWelcome , navigateToSignUp, navigateToReset}) => {
     return(
         <SafeAreaView style={[styles.container]}>
           <View style={styles.bubble} />
@@ -50,7 +50,7 @@ const Login = ({navigateToWelcome , navigateToReset}) => {
                 {/* Register */}
                 <Text style={styles.linkText}>
                   Not a member yet? 
-                  <TouchableOpacity /*onPress={}*/>
+                  <TouchableOpacity style={styles.linkText} onPress={navigateToSignUp}>
                     <Text style={styles.link}>Register Now</Text>
                   </TouchableOpacity>
                 </Text>
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
       fontWeight: 'bold'
     },
     form: {
-      marginTop: 100,
+      marginTop: 20,
       marginRight: 40,
       marginLeft: 40,
     },
