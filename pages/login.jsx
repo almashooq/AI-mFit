@@ -80,12 +80,12 @@ const styles = StyleSheet.create({
       backgroundColor: '#797979',
     },
     contentContainer: {
-      paddingTop: 100,
+      paddingTop: "50%",
     },
     header: {
       alignItems: 'center',
       position: "absolute",
-      top: 150,
+      top: 100,
     },
     logo: {
       width: 200,
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
       fontSize: 34,
       fontWeight: 'bold',
       color: 'white',
-      marginTop: 50,
+      marginTop: 20,
       marginBottom: 50,
     },
     subtitle: {
@@ -162,10 +162,10 @@ const styles = StyleSheet.create({
       bottom: 0,
       left: 0,
       right: 0,
-      height: '65%',
+      height: '70%',
       backgroundColor: '#ffffff',
-      borderTopLeftRadius: 300,
-      borderTopRightRadius: 300,
+      borderTopLeftRadius: 100,
+      borderTopRightRadius: 100,
       zIndex: -1,
     },
     backArrow: {
