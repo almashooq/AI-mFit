@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import WelcomePage from "./pages/welcome";
 import Login from "./pages/login";
-import Work from './pages/work'
+import Work from './pages/work';
+import SignUp from './pages/SignUp';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("Welcome");
@@ -17,10 +18,15 @@ export default function App() {
         />
       )}
       {currentPage === "Login" && (
-        <Login navigateToWelcome={() => setCurrentPage("Welcome")} />
+        <Login navigateToWelcome={() => setCurrentPage("Welcome")} 
+         navigateToSignUp = {()=> setCurrentPage("SignUp")} 
+         />
       )}
       {currentPage === "Work" && (
         <Work navigateToWelcome={() => setCurrentPage("Welcome")} />
+      )}
+      {currentPage === "SignUp" && (
+        <SignUp />
       )}
     </View>
   );
