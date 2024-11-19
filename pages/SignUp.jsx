@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button, SafeAreaView, Image, TextInput, TouchableOpacity } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import logo from '../assets/logo.png';
-import back from '../assets/arrow.png'
 
-const SignUp = ({navigateToLogin}) => {
+const SignUp = () => {
   const [image, setImage] = useState(null);
 
   const pickImage = async () => {
@@ -21,11 +20,6 @@ const SignUp = ({navigateToLogin}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-          {/*Back*/}
-          <TouchableOpacity style={styles.backArrow} onPress={navigateToLogin}>
-            <Image source={back}/>
-          </TouchableOpacity>
-
       <View style={styles.header}>
         <Image source={logo} style={styles.logo} />
         <Text style={styles.title}>SIGN UP</Text>
@@ -134,13 +128,6 @@ const styles = StyleSheet.create({
     color: '#D32F2F',
     fontWeight: 'bold',
   },
-    backArrow: {
-        position: "absolute",
-        paddingTop: 50,
-        paddingLeft: 20,
-        top: 0,
-        left: 0,
-    }
 });
 
 export default SignUp;
