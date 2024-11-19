@@ -23,7 +23,7 @@ export default function App() {
         <Login 
           navigateToWelcome={() => setCurrentPage("Welcome")} 
           navigateToReset={() => setCurrentPage("Reset")}
-          navigateToSaignUp = {()=> setCurrentPage("SignUp")} 
+          navigateToSignUp = {()=> setCurrentPage("SignUp")} 
         />
       )}
       {currentPage === "Work" && (
@@ -33,7 +33,7 @@ export default function App() {
         <Reset navigateToLogin={() => setCurrentPage("Login")} />
       )}
       {currentPage === "SignUp" && (
-        <SignUp />
+        <SignUp navigateToLogin={() => setCurrentPage("Login")}/>
       )}
     </View>
   );

@@ -1,11 +1,17 @@
 import React from 'react';
 import { SafeAreaView, View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 import logo from '../assets/logo.png'
+import back from '../assets/arrow.png'
 
 const Login = ({navigateToWelcome , navigateToSignUp, navigateToReset}) => {
     return(
         <SafeAreaView style={[styles.container]}>
           <View style={styles.bubble} />
+
+          {/*Back*/}
+          <TouchableOpacity style={styles.backArrow} onPress={navigateToWelcome}>
+            <Image source={back}/>
+          </TouchableOpacity>
 
           {/*header*/}
           <View style={styles.header}>
@@ -55,11 +61,12 @@ const Login = ({navigateToWelcome , navigateToSignUp, navigateToReset}) => {
                   </TouchableOpacity>
                 </Text>
             </View>
-
-            {/* Back to Welcome Button */}
+            {/*  
+            // Back to Welcome Button
             <TouchableOpacity onPress={navigateToWelcome} style={styles.backButton}>
               <Text style={styles.backButtonText}>Back to Welcome</Text>
             </TouchableOpacity>
+            */}
           </View>
         </SafeAreaView>
     );
@@ -161,6 +168,13 @@ const styles = StyleSheet.create({
       borderTopRightRadius: 300,
       zIndex: -1,
     },
+    backArrow: {
+        position: "absolute",
+        paddingTop: 50,
+        paddingLeft: 20,
+        top: 0,
+        left: 0,
+    }
   });
 
 
