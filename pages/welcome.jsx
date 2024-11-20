@@ -4,7 +4,7 @@ import { Video } from 'expo-av';
 import welcomeBG from "../assets/welcomeBG.mp4";
 import logo from "../assets/logo.png";
 
-const WelcomePage = ({ navigateToLogin, navigateToWork }) => {
+const WelcomePage = ({ navigateToLogin, navigateToPreWorkout }) => {
   return (
     <View style={styles.container}>
       {/* Background Video */}
@@ -26,7 +26,7 @@ const WelcomePage = ({ navigateToLogin, navigateToWork }) => {
 
         {/* Buttons */}
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={navigateToWork}>
+          <TouchableOpacity style={styles.button} onPress={navigateToPreWorkout}>
             <Text style={styles.buttonText}>TRY AI’MFIT</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={navigateToLogin}>
