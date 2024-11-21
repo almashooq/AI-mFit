@@ -48,7 +48,7 @@ export default function App() {
 
   const handleInfos = (infos) => {
     setCurrentPoseTrackerInfos(infos);
-    console.log('Received infos:', infos);
+    console.log('Received infos:', infos.data.keypoints);
   };
 
   const webViewCallback = (info) => {
