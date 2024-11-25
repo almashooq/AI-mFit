@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Image, TouchableOpacity } from 'react-native';
 import WebView from 'react-native-webview';
 import { Camera, useCameraPermissions } from 'expo-camera';
+import logo from '../assets/logo.png'
+
 
 const API_KEY = "dfa9144b-df2c-4ba2-b2ba-fe94be6e8d6e";
 const POSETRACKER_API = "https://app.posetracker.com/pose_tracker/tracking";
