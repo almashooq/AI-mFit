@@ -10,7 +10,7 @@ const Login = ({navigateToWelcome}) => {
           {/*header*/}
           <View style={styles.header}>
             <Image source={logo} style={styles.logo} />
-            <Text style={styles.title}>LOG IN</Text>
+            <Text style={styles.title}>Login</Text>
           </View>
 
           <View style={styles.contentContainer}>
@@ -80,14 +80,12 @@ const styles = StyleSheet.create({
       fontSize: 34,
       fontWeight: 'bold',
       color: 'white',
-      marginTop: 50,
-      marginBottom: 50,
+      marginTop: 80,
     },
     subtitle: {
       fontSize: 19,
       paddingBottom: 40,
       color: 'black',
-      textAlign: 'center',
       fontWeight: 'bold'
     },
     form: {
@@ -96,7 +94,6 @@ const styles = StyleSheet.create({
       marginLeft: 40,
     },
     inputContainer: {
-      backgroundColor: '#fff',
       borderRadius: 25,
       marginBottom: 15,
       paddingHorizontal: 15,
@@ -151,7 +148,6 @@ const styles = StyleSheet.create({
       backgroundColor: '#ffffff',
       borderTopLeftRadius: 300,
       borderTopRightRadius: 300,
-      zIndex: -1,
     },
   });
 
