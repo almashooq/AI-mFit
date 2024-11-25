@@ -1,11 +1,17 @@
 import React from 'react';
 import { SafeAreaView, View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
 import logo from '../assets/logo.png'
+import back from '../assets/arrow.png'
 
-const Login = ({navigateToWelcome}) => {
+const Login = ({navigateToWelcome , navigateToSignUp, navigateToReset}) => {
     return(
         <SafeAreaView style={[styles.container]}>
           <View style={styles.bubble} />
+
+          {/*Back*/}
+          <TouchableOpacity style={styles.backArrow} onPress={navigateToWelcome}>
+            <Image source={back}/>
+          </TouchableOpacity>
 
           {/*header*/}
           <View style={styles.header}>
@@ -39,19 +45,28 @@ const Login = ({navigateToWelcome}) => {
             </TouchableOpacity>
 
             {/* Links */}
-            <View style={styles.linksContainer}>
-              <Text style={styles.linkText}>
-                Forgot your password? <Text style={styles.link}>Reset Password</Text>
-              </Text>
-              <Text style={styles.linkText}>
-                Not a member yet? <Text style={styles.link}>Register Now</Text>
-              </Text>
+            <View style={styles.linksContainer}> 
+                {/* Reset */}
+                <Text style={styles.linkText}>
+                  Forgot your password? 
+                  <TouchableOpacity onPress={navigateToReset}>
+                    <Text style={styles.link}>Reset Password</Text>
+                  </TouchableOpacity>
+                </Text>
+                {/* Register */}
+                <Text style={styles.linkText}>
+                  Not a member yet? 
+                  <TouchableOpacity style={styles.linkText} onPress={navigateToSignUp}>
+                    <Text style={styles.link}>Register Now</Text>
+                  </TouchableOpacity>
+                </Text>
             </View>
-
-            {/* Back to Welcome Button */}
+            {/*  
+            // Back to Welcome Button
             <TouchableOpacity onPress={navigateToWelcome} style={styles.backButton}>
               <Text style={styles.backButtonText}>Back to Welcome</Text>
             </TouchableOpacity>
+            */}
           </View>
         </SafeAreaView>
     );
@@ -65,12 +80,12 @@ const styles = StyleSheet.create({
       backgroundColor: '#797979',
     },
     contentContainer: {
-      paddingTop: 100,
+      paddingTop: "50%",
     },
     header: {
       alignItems: 'center',
       position: "absolute",
-      top: 150,
+      top: 100,
     },
     logo: {
       width: 200,
@@ -89,7 +104,7 @@ const styles = StyleSheet.create({
       fontWeight: 'bold'
     },
     form: {
-      marginTop: 100,
+      marginTop: 20,
       marginRight: 40,
       marginLeft: 40,
     },
@@ -144,11 +159,18 @@ const styles = StyleSheet.create({
       bottom: 0,
       left: 0,
       right: 0,
-      height: '65%',
+      height: '70%',
       backgroundColor: '#ffffff',
       borderTopLeftRadius: 300,
       borderTopRightRadius: 300,
     },
+    backArrow: {
+        position: "absolute",
+        paddingTop: 50,
+        paddingLeft: 20,
+        top: 0,
+        left: 0,
+    }
   });
 
 

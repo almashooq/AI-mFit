@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Dimensions, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import WebView from 'react-native-webview';
 import { Camera, useCameraPermissions } from 'expo-camera';
-import { Button } from 'react-native';
-import logo from '../assets/logo.png'
-
-
 
 const API_KEY = "dfa9144b-df2c-4ba2-b2ba-fe94be6e8d6e";
 const POSETRACKER_API = "https://app.posetracker.com/pose_tracker/tracking";
@@ -169,7 +165,6 @@ export default Work;
   const [poseTrackerInfos, setCurrentPoseTrackerInfos] = useState();
   const [repsCounter, setRepsCounter] = useState(0);
   const [permission, requestPermission] = useCameraPermissions();
-  
 
   useEffect(() => {
     if (!permission?.granted) {
@@ -181,7 +176,7 @@ export default Work;
   const difficulty = "easy";
   const skeleton = true;
 
-  const posetracker_url = `${POSETRACKER_API}?token=${API_KEY}&exercise=${exercise}&difficulty=${difficulty}&width=${width}&height=${height}&isMobile=${true}`;
+  const posetracker_url = `${POSETRACKER_API}?token=${API_KEY}&exercise=${exercise}&difficulty=${difficulty}&width=${width}&height=${height}&keypoints=true`;
 
   // Bridge JavaScript BETWEEN POSETRACKER & YOUR APP
   
@@ -192,7 +187,7 @@ export default Work;
 
   const handleInfos = (infos) => {
     setCurrentPoseTrackerInfos(infos);
-    console.log('Received infos:', infos);
+    console.log('Received infos:', infos.data.keypoints);
   };
 
   const webViewCallback = (info) => {
@@ -205,19 +200,18 @@ export default Work;
 
   const onMessage = (event) => {
     try {
-      const parsedData = JSON.parse(event.nativeEvent.data);
-      console.log('Parsed data:', parsedData);
-  
-      // Check for keypoints
-      if (parsedData.keypoints) {
-        parsedData.keypoints.forEach((keypoint) => {
-          console.log(`Keypoint: ${keypoint.name}, X: ${keypoint.x}, Y: ${keypoint.y}, Confidence: ${keypoint.confidence}`);
-        });
+      let parsedData;
+      if (typeof event.nativeEvent.data === 'string') {
+        parsedData = JSON.parse(event.nativeEvent.data);
+      } else {
+        parsedData = event.nativeEvent.data;
       }
-  
+
+      console.log('Parsed data:', parsedData);
       webViewCallback(parsedData);
     } catch (error) {
       console.error('Error processing message:', error);
+      console.log('Problematic data:', event.nativeEvent.data);
     }
   };
 
@@ -249,7 +243,6 @@ export default Work;
         }}
       />
       <View style={styles.infoContainer}>
-        <Image source={logo} style={styles.logo} />
         <Text>Status : {!poseTrackerInfos ? "loading AI..." : "AI Running"}</Text>
         <Text>Info type : {!poseTrackerInfos ? "loading AI..." : poseTrackerInfos.type}</Text>
         <Text>Counter: {repsCounter}</Text>
@@ -339,7 +332,6 @@ export default Work;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    position: 'relative',
     flexDirection: 'column',
   },
   webViewContainer: {
