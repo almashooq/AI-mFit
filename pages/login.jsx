@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
       fontSize: 34,
       fontWeight: 'bold',
       color: 'white',
-      marginTop: 80,
+      marginTop: 20,
     },
     subtitle: {
       fontSize: 19,
@@ -161,8 +161,8 @@ const styles = StyleSheet.create({
       right: 0,
       height: '70%',
       backgroundColor: '#ffffff',
-      borderTopLeftRadius: 300,
-      borderTopRightRadius: 300,
+      borderTopLeftRadius: 100,
+      borderTopRightRadius: 100,
     },
     backArrow: {
         position: "absolute",
