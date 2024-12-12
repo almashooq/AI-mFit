@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useRef} from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import WebView from 'react-native-webview';
-import { Camera, useCameraPermissions } from 'expo-camera';
+import {useCameraPermissions , useMicrophonePermissions , CameraView } from 'expo-camera';
+import { fetch } from 'expo/fetch';
 
 const API_KEY = "dfa9144b-df2c-4ba2-b2ba-fe94be6e8d6e";
 const POSETRACKER_API = "https://app.posetracker.com/pose_tracker/tracking";
@@ -11,18 +12,73 @@ export default function App() {
   const [poseTrackerInfos, setCurrentPoseTrackerInfos] = useState();
   const [repsCounter, setRepsCounter] = useState(0);
   const [permission, requestPermission] = useCameraPermissions();
+  const cameraRef = useRef(null);
+  const frameBuffer = useRef([]);
 
-  useEffect(() => {
+  useEffect( () => {
+    const handlePermission = async () => {
     if (!permission?.granted) {
       requestPermission();
     }
+    // if (permission?.granted) {
+    //   if (cameraRef.current) {
+    //     try {
+    //       const photo = await cameraRef.current.takePictureAsync({ base64: true });
+    //       frameBuffer.current.push(photo.base64);
+    //     } catch (error) {
+    //       console.error('Error capturing frame:', error);
+    //     }
+    //   }
+    // }
+    };
+    handlePermission();
   }, []);
+
+
+  // const sendFramesToServer = async (frames) => {
+  //   try {
+  //     const response = await fetch("https://3314-37-231-254-67.ngrok-free.app", {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ "Aida":"Aida" }),
+  //     });
+
+  //     const result = await response.json();
+  //     console.log('Server response:', result);
+  //   } catch (error) {
+  //     console.error('Error sending frames:', error);
+  //   }
+  // };
+
+//  useEffect(() => {
+//   const captureInterval = setInterval(async () => {
+//     if (cameraRef.current) {
+//       try {
+//         const photo = await cameraRef.current.takePictureAsync({ base64: true });
+//         frameBuffer.current.push(photo.base64);
+
+//         // If buffer contains 30 frames, send them to the server
+//         if (frameBuffer.current.length >= 30) {
+//           const framesToSend = [...frameBuffer.current];
+//           frameBuffer.current = []; // Clear the buffer
+//           sendFramesToServer(framesToSend);
+//         }
+//       } catch (error) {
+//         console.error('Error capturing frame:', error);
+//       }
+//     }
+//   }, 1000); 
+
+  // return () => clearInterval(captureInterval); 
+  // },[frameBuffer]);
 
   const exercise = "squat";
   const difficulty = "easy";
   const skeleton = true;
 
-  const posetracker_url = `${POSETRACKER_API}?token=${API_KEY}&exercise=${exercise}&difficulty=${difficulty}&width=${width}&height=${height}&isMobile=${true}&keypoints=${true}`;
+  const posetracker_url = `${POSETRACKER_API}?token=${API_KEY}&exercise=${exercise}&difficulty=${difficulty}&width=${width}&height=${height}&isMobile=${true}&keypoints=${true}&screenshots=true`;
 
   // Bridge JavaScript BETWEEN POSETRACKER & YOUR APP
   const jsBridge = `

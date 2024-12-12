@@ -6,6 +6,8 @@ import Work from "./pages/work";
 import Reset from "./pages/reset";
 import SignUp from './pages/SignUp';
 import PreWorkout from './pages/PreWorkout';
+import Profile from "./pages/Profile";
+import Home from "./pages/Home";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("Welcome");
@@ -31,6 +33,7 @@ export default function App() {
           navigateToWelcome={() => setCurrentPage("Welcome")} 
           navigateToReset={() => setCurrentPage("Reset")}
           navigateToSignUp = {()=> setCurrentPage("SignUp")} 
+          navigateToHome={() => setCurrentPage("Home")}
         />
       )}
       {currentPage === "Work" && (
@@ -41,6 +44,16 @@ export default function App() {
       )}
       {currentPage === "SignUp" && (
         <SignUp navigateToLogin={() => setCurrentPage("Login")}/>
+      )}
+       {currentPage === "Profile" && (
+        <Profile 
+        navigateToHome={() => setCurrentPage("Home")}
+        />
+      )}
+       {currentPage === "Home" && (
+        <Home 
+        navigateToProfile={() => setCurrentPage("Profile")}
+        />
       )}
     </View>
   );

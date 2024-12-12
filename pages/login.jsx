@@ -3,7 +3,7 @@ import { SafeAreaView, View, Text, StyleSheet, Image, TextInput, TouchableOpacit
 import logo from '../assets/logo.png'
 import back from '../assets/arrow.png'
 
-const Login = ({navigateToWelcome , navigateToSignUp, navigateToReset}) => {
+const Login = ({navigateToWelcome , navigateToSignUp, navigateToReset , navigateToHome}) => {
     return(
         <SafeAreaView style={[styles.container]}>
           <View style={styles.bubble} />
@@ -40,7 +40,7 @@ const Login = ({navigateToWelcome , navigateToSignUp, navigateToReset}) => {
             </View>
 
             {/*login button*/}
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={navigateToHome}>
               <Text style={styles.buttonText}>LOG IN</Text>
             </TouchableOpacity>
 
