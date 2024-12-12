@@ -4,7 +4,56 @@ import * as ImagePicker from 'expo-image-picker';
 import logo from '../assets/logo.png';
 import back from '../assets/arrow.png'
 
-const SignUp = ({navigateToLogin}) => {
+const email_regex =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+// should start with a letter...letters/numbers/underscore allowed...length: 2 to 23
+const name_regex = /^[a-zA-Z][a-zA-Z0-9-_]{2,23}$/;
+//should have letters and numbers...length: 8 to 28
+const password_regex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,24}$/;
+
+const SignUp = ({navigateToLogin, navigateToHome}) => {
+  //email
+  const [email,setEmail]= useState('');
+  const [validEmail, setvEmail]= useState(false);
+  useEffect ( ()=>{
+    setvEmail ( email_regex.test(email) )
+  }, [email] )
+
+  //username
+  const [user, setUser]= useState('');
+  const [validName, setvName]= useState(false);
+  const [nFocus, setnFocus]= useState(false);
+  useEffect ( ()=>{
+    setvName ( name_regex.test(user) )
+  }, [user] )
+
+  //password
+  const [pwd,setPwd]= useState('');
+  const [validPwd, setvPwd]= useState(false);
+  const [pFocus, setpFocus]= useState(false);
+  //Confirm Password
+  const [cpwd,setcPwd]= useState('');
+  const [vcPwd, setvcPwd]= useState(false);
+
+  useEffect ( ()=>{
+    setvPwd ( password_regex.test(pwd) )
+    setvcPwd ( pwd == cpwd )
+  }, [pwd, cpwd] )
+
+  //height
+  const [height,setHeight]= useState('');
+  const [validHeight, setvHeight]= useState(false);
+  
+  //height
+  const [weight,setWeight]= useState('');
+  const [validWeight, setvWeight]= useState(false);
+
+  //age
+  const [age,setAge]= useState('');
+
+  //gender
+  const [gender,setGender]= useState('');
+
+  //image
   const [image, setImage] = useState(null);
 
   const pickImage = async () => {
@@ -17,6 +66,11 @@ const SignUp = ({navigateToLogin}) => {
     if (!result.canceled) {
       setImage(result.uri);
     }
+  };
+
+  const handleSignup = () => {
+    //upon success
+    navigateToHome(); 
   };
 
   return (
@@ -34,17 +88,63 @@ const SignUp = ({navigateToLogin}) => {
 
       <View style={styles.form}>
         <Text style={styles.label}>Create Your Account</Text>
-        <TextInput style={styles.input} placeholder="Username" placeholderTextColor="#999" />
-        <TextInput style={styles.input} placeholder="Email" placeholderTextColor="#999" />
-        <TextInput style={styles.input} placeholder="Height (cm)" placeholderTextColor="#999" />
-        <TextInput style={styles.input} placeholder="Weight (kg)" placeholderTextColor="#999" />
-        <TextInput style={styles.input} placeholder="Gender" placeholderTextColor="#999" />
-        <TextInput style={styles.input} placeholder="Age" placeholderTextColor="#999" />
-        <TextInput style={styles.input} placeholder="Password" placeholderTextColor="#999" />
+        {/* username */}
+        <TextInput style={styles.input} 
+          placeholder="Username" placeholderTextColor="#999" 
+          value={pwd}
+          onChangeText={(text) => setUser(text)}
+          onFocus={()=>setnFocus(true)}
+          onBlur={()=>setnFocus(false)}
+        />
+        {/* email */}
+        <TextInput style={styles.input} 
+          placeholder="Email" placeholderTextColor="#999"
+          value={pwd}
+          onChangeText={(text) => setEmail(text)}
+        />
+        {/* height */}
+        <TextInput style={styles.input} 
+          placeholder="Height (cm)" placeholderTextColor="#999"
+          value={height}
+          onChangeText={(text) => setHeight(text)} 
+        />
+        {/* weight */}
+        <TextInput style={styles.input} 
+          placeholder="Weight (kg)" placeholderTextColor="#999"
+          value={weight}
+          onChangeText={(text) => setWeight(text)} 
+        />
+        {/* gender (drop menu) */}
+        <TextInput style={styles.input}  
+          placeholder="Gender" placeholderTextColor="#999" 
+
+        />
+        {/* age (drop menu) */}
+        <TextInput style={styles.input} 
+          placeholder="Age" placeholderTextColor="#999" 
+
+        />
+        {/* password */}
+        <TextInput style={styles.input} 
+          placeholder="Password" placeholderTextColor="#999" 
+          secureTextEntry
+          value={pwd}
+          onChangeText={(text) => setPwd(text)}
+          onFocus={()=>setpFocus(true)}
+          onBlur={()=>setpFocus(false)}
+        />
+        {/* confirm password */}
+        <TextInput style={styles.input} 
+          placeholder="Confirm Password" placeholderTextColor="#999" 
+          secureTextEntry
+          value={cpwd}
+          onChangeText={(text) => setcPwd(text)}
+        />
+        {/* image */}
         <TouchableOpacity style={styles.uploadButton} onPress={pickImage}>
           <Text style={styles.uploadButtonText}>Add Profile Picture</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.signUpButton}>
+        <TouchableOpacity style={styles.signUpButton} onPress={handleSignup}>
           <Text style={styles.signUpButtonText}>SIGN UP</Text>
         </TouchableOpacity>
       </View>

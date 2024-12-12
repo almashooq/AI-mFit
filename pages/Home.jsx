@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Button, SafeAreaView, Image, TextInput, TouchableOpacity } from 'react-native';
 import logo from '../assets/logo.png';
-import Profile_pic from '../assets/profile_page.png';
+import Profile_pic from '../assets/dummyProfile.png';
 
 
 const Home = ({navigateToProfile})=> {

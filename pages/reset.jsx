@@ -3,6 +3,9 @@ import { SafeAreaView, View, Text, StyleSheet, Image, TextInput, TouchableOpacit
 import logo from '../assets/logo.png'
 import back from '../assets/arrow.png'
 
+const email_regex =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const password_regex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,24}$/;
+
   const Reset = ({navigateToLogin}) => {
     const [view, setView] = useState("enterEmail");
     const [email, setEmail] = useState("");

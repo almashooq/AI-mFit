@@ -1,0 +1,14 @@
+{
+    "users": [
+        {
+            "username":"user0",
+            "email":"user0email@gmail.com",
+            "password":"user0123",
+            "weight":"170",
+            "height":"80",
+            "gender":"Female",
+            "age":"23",
+            "picture":"dummyProfile.png"
+        }
+    ]
+}

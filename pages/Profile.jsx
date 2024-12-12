@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity, TextInput } from 'react-native';
 import logo from '../assets/logo.png';
-import Profile_pic from '../assets/profile_page.png';
+import Profile_pic from '../assets/dummyProfile.png';
 import back from '../assets/arrow.png';
 
 const Profile = ({navigateToHome}) => {
