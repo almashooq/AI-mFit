@@ -43,7 +43,10 @@ export default function App() {
         <Reset navigateToLogin={() => setCurrentPage("Login")} />
       )}
       {currentPage === "SignUp" && (
-        <SignUp navigateToLogin={() => setCurrentPage("Login")}/>
+        <SignUp 
+          navigateToLogin={() => setCurrentPage("Login")}
+          navigateToHome={() => setCurrentPage("Home")}
+        />
       )}
        {currentPage === "Profile" && (
         <Profile 

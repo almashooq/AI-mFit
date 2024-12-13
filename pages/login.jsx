@@ -1,11 +1,33 @@
-import React from 'react';
-import { SafeAreaView, View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView, View, Text, StyleSheet, Image, TextInput, TouchableOpacity, Alert } from 'react-native';
 import logo from '../assets/logo.png'
 import back from '../assets/arrow.png'
 
 const Login = ({navigateToWelcome , navigateToSignUp, navigateToReset , navigateToHome}) => {
-    return(
-        <SafeAreaView style={[styles.container]}>
+  const [user,setUser] = useState('');
+  const [pwd,setPwd] = useState('');
+
+  const userdata = {
+    email: "testemail@gmail.com",
+    username: "test123",
+    password: "123456"
+  };
+
+  const handleLogin = () => {
+    if (!user || !pwd) {
+      Alert.alert('Error', 'Please fill out all fields.');
+      return;
+    }
+
+    if ((user === userdata.email || user === userdata.username) && pwd === userdata.password) {
+      navigateToHome(); 
+    } else {
+      Alert.alert('Error', 'Invalid username/email or password.');
+    }
+  };
+  
+  return(
+        <SafeAreaView style={[styles.container]}>xz
           <View style={styles.bubble} />
 
           {/*Back*/}
@@ -27,7 +49,12 @@ const Login = ({navigateToWelcome , navigateToSignUp, navigateToReset , navigate
                 <TextInput 
                   style={styles.input} 
                   placeholder="Username/Email" 
-                  placeholderTextColor="#999" />
+                  placeholderTextColor="#999" 
+                  value={user}
+                  onChangeText={(text) => setUser(text)}
+                  keyboardType="email-address"
+                  autoCapitalize="none"
+                />
               </View>
               <View style={styles.inputContainer}>
                 <TextInput
@@ -35,12 +62,14 @@ const Login = ({navigateToWelcome , navigateToSignUp, navigateToReset , navigate
                   placeholder="Password"
                   placeholderTextColor="#999"
                   secureTextEntry
+                  value={pwd}
+                  onChangeText={(text) => setPwd(text)}
                 />            
               </View>
             </View>
 
             {/*login button*/}
-            <TouchableOpacity style={styles.button} onPress={navigateToHome}>
+            <TouchableOpacity style={styles.button} onPress={handleLogin}>
               <Text style={styles.buttonText}>LOG IN</Text>
             </TouchableOpacity>
 
