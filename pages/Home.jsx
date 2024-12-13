@@ -3,7 +3,8 @@ import logo from '../assets/logo.png';
 import Profile_pic from '../assets/dummyProfile.png';
 
 
-const Home = ({navigateToProfile, navigateToPreWorkout})=> {
+
+const Home = ({navigateToProfile, navigateToReport, navigateToPreWorkout})=> {
     return(
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -18,7 +19,7 @@ const Home = ({navigateToProfile, navigateToPreWorkout})=> {
         <TouchableOpacity style={styles.button} onPress={navigateToPreWorkout}>
             <Text style={styles.buttonText}>Work</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={navigateToProfile}>
+        <TouchableOpacity style={styles.button} onPress={navigateToReport}>
             <Text style={styles.buttonText}>Check workouts reports</Text>
         </TouchableOpacity>
     </View>

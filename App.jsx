@@ -8,6 +8,7 @@ import SignUp from './pages/SignUp';
 import PreWorkout from './pages/PreWorkout';
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
+import Report from "./pages/Report";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("Welcome");
@@ -55,8 +56,15 @@ export default function App() {
       )}
        {currentPage === "Home" && (
         <Home 
-        navigateToProfile={() => setCurrentPage("Profile")}
+        navigateToReport={() => setCurrentPage("Report")}
         navigateToPreWorkout={() => setCurrentPage("PreWorkout")}
+        />
+      )}
+      {currentPage === "Report" && (
+        <Report 
+        navigateToReport={() => setCurrentPage("Report")}
+        navigateToPreWorkout={() => setCurrentPage("PreWorkout")}
+        navigateToHome={() => setCurrentPage("Home")}
         />
       )}
     </View>
