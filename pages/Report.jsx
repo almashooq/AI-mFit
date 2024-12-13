@@ -22,13 +22,19 @@ const Report = ({navigateToHome, navigateToReport, navigateToProfile})=> {
             </View>
             <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.button} onPress={navigateToReport}>
-                    <Text style={styles.buttonText}>Workouts: Overall Feedback:</Text>
+                    <Text style={styles.buttonText}>Calories burened: 123</Text>
+                    <Text style={styles.buttonText}>Coutn: 9</Text>
+                    <Text style={styles.buttonText}>Overall feedback: good job!</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Workouts: Overall Feedback:</Text>
+                <Text style={styles.buttonText}>Calories burened: 234</Text>
+                    <Text style={styles.buttonText}>Coutn: 10</Text>
+                    <Text style={styles.buttonText}>Overall feedback: good job!</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Workouts: Overall Feedback:</Text>
+                <Text style={styles.buttonText}>Calories burened: 345</Text>
+                    <Text style={styles.buttonText}>Coutn: 5</Text>
+                    <Text style={styles.buttonText}>Overall feedback: good job!</Text>
                 </TouchableOpacity>
             </View>
     </SafeAreaView>
@@ -70,15 +76,13 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     paddingVertical: 15,
     marginVertical: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'left',
     height: 130,
   },
   buttonText: {
     color: '#FFFFFF',
     fontSize: 27,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    marginLeft: 10,
   },
   backArrow: {
     position: "absolute",
