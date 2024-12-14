@@ -58,13 +58,14 @@ export default function App() {
         <Home 
         navigateToReport={() => setCurrentPage("Report")}
         navigateToPreWorkout={() => setCurrentPage("PreWorkout")}
+        navigateToProfile={() => setCurrentPage("Profile")}
         />
       )}
       {currentPage === "Report" && (
         <Report 
         navigateToReport={() => setCurrentPage("Report")}
-        navigateToPreWorkout={() => setCurrentPage("PreWorkout")}
         navigateToHome={() => setCurrentPage("Home")}
+        navigateToProfile={() => setCurrentPage("Profile")}
         />
       )}
     </View>
