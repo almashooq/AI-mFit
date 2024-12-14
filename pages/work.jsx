@@ -12,67 +12,41 @@ export default function App() {
   const [poseTrackerInfos, setCurrentPoseTrackerInfos] = useState();
   const [repsCounter, setRepsCounter] = useState(0);
   const [permission, requestPermission] = useCameraPermissions();
-  const cameraRef = useRef(null);
-  const frameBuffer = useRef([]);
 
   useEffect( () => {
     const handlePermission = async () => {
     if (!permission?.granted) {
       requestPermission();
     }
-    // if (permission?.granted) {
-    //   if (cameraRef.current) {
-    //     try {
-    //       const photo = await cameraRef.current.takePictureAsync({ base64: true });
-    //       frameBuffer.current.push(photo.base64);
-    //     } catch (error) {
-    //       console.error('Error capturing frame:', error);
-    //     }
-    //   }
-    // }
     };
     handlePermission();
   }, []);
 
 
-  // const sendFramesToServer = async (frames) => {
-  //   try {
-  //     const response = await fetch("https://3314-37-231-254-67.ngrok-free.app", {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({ "Aida":"Aida" }),
-  //     });
+  const sendToServer = async (data) => {
+    try {
+      const response = await fetch("https://3314-37-231-254-67.ngrok-free.app", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-  //     const result = await response.json();
-  //     console.log('Server response:', result);
-  //   } catch (error) {
-  //     console.error('Error sending frames:', error);
-  //   }
-  // };
+      const result = await response.json();
+      console.log('Server response:', result);
+    } catch (error) {
+      console.error('Error sending frames:', error);
+    }
+  };
 
-//  useEffect(() => {
-//   const captureInterval = setInterval(async () => {
-//     if (cameraRef.current) {
-//       try {
-//         const photo = await cameraRef.current.takePictureAsync({ base64: true });
-//         frameBuffer.current.push(photo.base64);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      sendToServer(poseTrackerInfos);
+    }, 3000);
 
-//         // If buffer contains 30 frames, send them to the server
-//         if (frameBuffer.current.length >= 30) {
-//           const framesToSend = [...frameBuffer.current];
-//           frameBuffer.current = []; // Clear the buffer
-//           sendFramesToServer(framesToSend);
-//         }
-//       } catch (error) {
-//         console.error('Error capturing frame:', error);
-//       }
-//     }
-//   }, 1000); 
-
-  // return () => clearInterval(captureInterval); 
-  // },[frameBuffer]);
+    return () => clearInterval(interval);
+  }, [poseTrackerInfos]); 
 
   const exercise = "squat";
   const difficulty = "easy";
