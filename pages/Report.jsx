@@ -3,8 +3,6 @@ import logo from '../assets/logo.png';
 import Profile_pic from '../assets/dummyProfile.png';
 import back from '../assets/arrow.png';
 
-
-
 const Report = ({navigateToHome, navigateToReport, navigateToProfile})=> {
     return(
         <SafeAreaView style={styles.container}>
@@ -21,18 +19,19 @@ const Report = ({navigateToHome, navigateToReport, navigateToProfile})=> {
                 <Text style={styles.texttext}>Recent Workouts</Text>
             </View>
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.button} onPress={navigateToReport}>
-                    <Text style={styles.buttonText}>Workouts:</Text>
-                    <Text style={styles.buttonText}>Overall feedback:</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>Workouts:</Text>
-                    <Text style={styles.buttonText}>Overall feedback:</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>Workouts:</Text>
-                    <Text style={styles.buttonText}>Overall feedback:</Text>
-                </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={navigateToReport}>
+                <Text style={styles.buttonText}>Workouts: Planks , Push ups , Burpees</Text>
+                <Text style={styles.buttonText}>Overall feedback: Great progress! Keep it up.</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.buttonText}>Workouts: Lunges , Burpees</Text>
+              <Text style={styles.buttonText}>Overall feedback: Good effort, aim for more consistency.</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonText}>Workouts: Push ups , Squats</Text>
+                <Text style={styles.buttonText}>Overall feedback: Excellent work! You’re on track to hit your goals.</Text>
+            </TouchableOpacity>
+
             </View>
     </SafeAreaView>
     );
