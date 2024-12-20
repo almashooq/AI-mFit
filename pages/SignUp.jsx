@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Button, SafeAreaView, Image, TextInput, TouchableOpacity } from 'react-native';
+import { ScrollView, View, Text, StyleSheet, Button, SafeAreaView, Image, TextInput, TouchableOpacity } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import logo from '../assets/logo.png';
 import back from '../assets/arrow.png'
@@ -74,6 +74,7 @@ const SignUp = ({navigateToLogin, navigateToHome}) => {
   };
 
   return (
+    <ScrollView>
     <SafeAreaView style={styles.container}>
       <View style={styles.bubble} />
        {/*Back*/}
@@ -149,6 +150,7 @@ const SignUp = ({navigateToLogin, navigateToHome}) => {
         </TouchableOpacity>
       </View>
     </SafeAreaView>
+    </ScrollView>
   );
 };
 
