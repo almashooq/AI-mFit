@@ -4,27 +4,45 @@ import logo from '../assets/logo.png'
 import back from '../assets/arrow.png'
 
 const Login = ({navigateToWelcome , navigateToSignUp, navigateToReset , navigateToHome}) => {
-  const API_URL = "http://localhost:8200/users";
+  const API_URL = "http://172.20.10.6:8500/users";
   const [user,setUser] = useState('');
   const [pwd,setPwd] = useState('');
 
-  const userdata = {
-    email: "testemail@gmail.com",
-    username: "test123",
-    password: "123456"
-  };
-
-  const handleLogin = () => {
+  const handleLogin = async (event) => {
     if (!user || !pwd) {
       Alert.alert('Error', 'Please fill out all fields.');
       return;
     }
+    event.preventDefault();
+    try {
+      // fetching data
+      const responseN = await fetch(`${API_URL}?username=${user}&password=${pwd}`);
+      const responseE = await fetch(`${API_URL}?email=${user}&password=${pwd}`);
 
-    if ((user === userdata.email || user === userdata.username) && pwd === userdata.password) {
-      navigateToHome(); 
-    } else {
-      Alert.alert('Error', 'Invalid username/email or password.');
+      //invalidation error
+      if (!responseN.ok && !responseE.ok) {
+        Alert.alert('Error', 'Invalid username/email or password');
+        return;
+      }
+      // storing data
+      const dataN = await responseN.json().catch(() => null);
+      const dataE = await responseE.json().catch(() => null);
+      const data = (dataN && dataN.length > 0) ? dataN : dataE;
+      //console.log(data)
+
+      if (data && data.length > 0) {
+        console.log('Logged in successfully:', data);
+        navigateToHome();
+      } else {
+        Alert.alert('Error', 'No matching user found.');
+      }
+
+    } catch (err) {
+      console.error('Error:', err);
+      Alert.alert('Error', 'Something went wrong. Please try again.');
     }
+    setUser('');
+    setPwd('');
   };
   
   return(

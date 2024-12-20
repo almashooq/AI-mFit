@@ -18,6 +18,16 @@
             "gender":"Male",
             "age":"23",
             "picture":"dummyProfile.png"
+        },
+        {
+            "username":"salma",
+            "email":"salmaishere@gmail.com",
+            "password":"salma123",
+            "height":"171",
+            "weight":"57",
+            "gender":"Female",
+            "age":"21",
+            "picture":"dummyProfile.png"
         }
     ]
 }
