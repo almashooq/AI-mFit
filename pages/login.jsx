@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SafeAreaView, View, Text, StyleSheet, Image, TextInput, TouchableOpacity, Alert } from 'react-native';
 import logo from '../assets/logo.png'
 import back from '../assets/arrow.png'
 
 const Login = ({navigateToWelcome , navigateToSignUp, navigateToReset , navigateToHome}) => {
+  const API_URL = "http://localhost:8200/users";
   const [user,setUser] = useState('');
   const [pwd,setPwd] = useState('');
 

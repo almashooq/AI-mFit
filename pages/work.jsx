@@ -1,14 +1,15 @@
 import React, { useState, useEffect , useRef} from 'react';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, Image, Text, View, Dimensions, TouchableOpacity } from 'react-native';
 import WebView from 'react-native-webview';
 import {useCameraPermissions , useMicrophonePermissions , CameraView } from 'expo-camera';
 import { fetch } from 'expo/fetch';
+import back from '../assets/arrow.png'
 
 const API_KEY = "dfa9144b-df2c-4ba2-b2ba-fe94be6e8d6e";
 const POSETRACKER_API = "https://app.posetracker.com/pose_tracker/tracking";
 const { width, height } = Dimensions.get('window');
 
-export default function App() {
+export default function Work({navigateToWelcome}) {
   const [poseTrackerInfos, setCurrentPoseTrackerInfos] = useState();
   const [repsCounter, setRepsCounter] = useState(0);
   const [permission, requestPermission] = useCameraPermissions();
@@ -134,6 +135,10 @@ export default function App() {
         }}
       />
       <View style={styles.infoContainer}>
+        {/*Back*/}
+        <TouchableOpacity style={styles.backArrow} onPress={navigateToWelcome}>
+          <Image source={back}/>
+        </TouchableOpacity>
         <Text>Status : {!poseTrackerInfos ? "loading AI..." : "AI Running"}</Text>
         <Text>Info type : {!poseTrackerInfos ? "loading AI..." : poseTrackerInfos.type}</Text>
         <Text>Counter: {repsCounter}</Text>
@@ -173,4 +178,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.8)',
     padding: 10,
   },
+  backArrow: {
+    position: "absolute",
+    paddingTop: 10,
+    paddingLeft: 20,
+    top: 0,
+    left: 0,
+  }
 });
