@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Alert, ScrollView, View, Text, StyleSheet, Button, SafeAreaView, Image, TextInput, TouchableOpacity } from 'react-native';
+import { Alert, ScrollView, KeyboardAvoidingView, Platform, View, Text, StyleSheet, Button, SafeAreaView, Image, TextInput, TouchableOpacity } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import logo from '../assets/logo.png';
 import back from '../assets/arrow.png';
@@ -132,8 +132,11 @@ const SignUp = ({navigateToLogin, navigateToHome}) => {
   };
 // =============================================================
   return (
+    <KeyboardAvoidingView
+    behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    style={styles.container}>
     <ScrollView>
-    <SafeAreaView style={styles.container}>
+    {/* <SafeAreaView style={styles.container}> */}
       <View style={styles.bubble} />
        {/*Back*/}
        <TouchableOpacity style={styles.backArrow} onPress={navigateToLogin}>
@@ -231,8 +234,10 @@ const SignUp = ({navigateToLogin, navigateToHome}) => {
           <Text style={styles.signUpButtonText}>SIGN UP</Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    {/* </SafeAreaView> */}
+
     </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 {/* ========================================================================== */}
