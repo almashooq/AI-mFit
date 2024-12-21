@@ -41,12 +41,11 @@ const Login = ({navigateToWelcome , navigateToSignUp, navigateToReset , navigate
       console.error('Error:', err);
       Alert.alert('Error', 'Something went wrong. Please try again.');
     }
-    setUser('');
     setPwd('');
   };
   
   return(
-        <SafeAreaView style={[styles.container]}>xz
+        <SafeAreaView style={[styles.container]}>
           <View style={styles.bubble} />
 
           {/*Back*/}
