@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Alert, ScrollView, KeyboardAvoidingView, Platform, View, Text, StyleSheet, Button, SafeAreaView, Image, TextInput, TouchableOpacity } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import { Dropdown } from 'react-native-element-dropdown';
 import logo from '../assets/logo.png';
 import back from '../assets/arrow.png';
 
@@ -9,6 +10,11 @@ const email_regex =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const name_regex = /^[a-zA-Z][a-zA-Z0-9-_]{2,23}$/;
 //should have letters and numbers...length: 8 to 28
 const password_regex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,24}$/;
+
+const data = [
+  { label: 'Male', value: 'Male' },
+  { label: 'Female', value: 'Female' },
+];
 
 const SignUp = ({navigateToLogin, navigateToHome}) => {
   const API_URL = "http://172.20.10.6:8500/users";
@@ -30,7 +36,6 @@ const SignUp = ({navigateToLogin, navigateToHome}) => {
   //password
   const [pwd,setPwd]= useState('');
   const [validPwd, setvPwd]= useState(false);
-  const [pFocus, setpFocus]= useState(false);
   //Confirm Password
   const [cpwd,setcPwd]= useState('');
   const [vcPwd, setvcPwd]= useState(false);
@@ -53,6 +58,7 @@ const SignUp = ({navigateToLogin, navigateToHome}) => {
 // =============================================================
   //gender
   const [gender,setGender]= useState('');
+  const [gFocus,setgFocus]= useState('false');
 // =============================================================
   //image
   const [image, setImage] = useState('dummyProfile.png');
@@ -180,6 +186,7 @@ const SignUp = ({navigateToLogin, navigateToHome}) => {
           placeholder="Height (cm)" placeholderTextColor="#999"
           value={height}
           onChangeText={(text) => setHeight(text)} 
+          keyboardType="numeric"
         />
 {/* ========================================================================== */}        
         {/* weight */}
@@ -187,20 +194,45 @@ const SignUp = ({navigateToLogin, navigateToHome}) => {
           placeholder="Weight (kg)" placeholderTextColor="#999"
           value={weight}
           onChangeText={(text) => setWeight(text)} 
+          keyboardType="numeric"
         />
 {/* ========================================================================== */}        
         {/* gender (drop menu) */}
-        <TextInput style={styles.input}  
+        {/* <TextInput style={styles.input}  
           placeholder="Gender" placeholderTextColor="#999" 
           value={gender}
           onChangeText={(text) => setGender(text)}
+        /> */}
+
+        {/* <Text style={[styles.input]}>
+          Gender
+        </Text> */}
+        <Dropdown
+          style={[styles.input, gFocus && { borderWidth: 1 }]}
+          placeholderStyle={styles.placeholderStyle}
+          selectedTextStyle={styles.selectedTextStyle}
+          iconStyle={styles.iconStyle}
+          data={data}
+          maxHeight={300}
+          labelField="label"
+          valueField="value"
+          placeholder={!gFocus ? 'Gender' : '...'}
+          value={gender}
+          onFocus={() => setgFocus(true)}
+          onBlur={() => setgFocus(false)}
+          onChange={item => {
+            setGender(item.value);
+            setgFocus(false);
+          }}
         />
+
 {/* ========================================================================== */}        
         {/* age (drop menu) */}
         <TextInput style={styles.input} 
           placeholder="Age" placeholderTextColor="#999" 
           value={age}
           onChangeText={(text) => setAge(text)}
+          keyboardType="numeric"
         />
 {/* ========================================================================== */}        
         {/* password */}
@@ -351,6 +383,24 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     marginBottom: 4,
+  },
+  // dropdown: {
+  //   height: 50,
+  //   borderColor: 'gray',
+  //   borderWidth: 0.5,
+  //   borderRadius: 8,
+  //   paddingHorizontal: 8,
+  // },
+  placeholderStyle: {
+    fontSize: 16,
+    color: "#999",
+  },
+  selectedTextStyle: {
+    fontSize: 16,
+  },
+  iconStyle: {
+    width: 20,
+    height: 20,
   },
 });
 

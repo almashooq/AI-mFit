@@ -4504,6 +4504,13 @@ react-is@^18.0.0:
   resolved "https://registry.npmjs.org/react-is/-/react-is-18.3.1.tgz"
   integrity sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==
 
+react-native-element-dropdown@^2.12.2:
+  version "2.12.2"
+  resolved "https://registry.yarnpkg.com/react-native-element-dropdown/-/react-native-element-dropdown-2.12.2.tgz#48d0c12b87591e2498c73bbde80e18374a4c262e"
+  integrity sha512-Tf8hfRuniYEXo+LGoVgIMoItKWuPLX6jbqlwAFgMbBhmWGTuV+g1OVOAx/ny16kgnwp+NhgJoWpxhVvr7HSmXA==
+  dependencies:
+    lodash "^4.17.21"
+
 react-native-video@^6.8.0:
   version "6.8.0"
   resolved "https://registry.npmjs.org/react-native-video/-/react-native-video-6.8.0.tgz"
