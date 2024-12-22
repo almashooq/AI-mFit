@@ -47,14 +47,28 @@ const SignUp = ({navigateToLogin, navigateToHome}) => {
 // =============================================================
   //height
   const [height,setHeight]= useState('');
-  const [validHeight, setvHeight]= useState(false);
+  // const [validHeight, setvHeight]= useState(false);
+  // useEffect(() => {
+  //   const isValid = /^\d+$/.test(height);
+  //   setvHeight(isValid);
+  // }, [height]);
 // ============================================================= 
-  //height
+  //weight
   const [weight,setWeight]= useState('');
-  const [validWeight, setvWeight]= useState(false);
+  // const [validWeight, setvWeight]= useState(false);
+  // useEffect(() => {
+  //   const isValid = /^\d+$/.test(weight);
+  //   setvHeight(isValid);
+  // }, [weight]);
 // =============================================================
   //age
   const [age,setAge]= useState('');
+  const [validAge, setvAge]= useState(false);
+  useEffect(() => {
+    const isValid = /^\d+$/.test(age) && Number(age) >= 13 && Number(age) <= 110;
+    setvAge(isValid);
+  }, [age]);
+  
 // =============================================================
   //gender
   const [gender,setGender]= useState('');
@@ -198,15 +212,6 @@ const SignUp = ({navigateToLogin, navigateToHome}) => {
         />
 {/* ========================================================================== */}        
         {/* gender (drop menu) */}
-        {/* <TextInput style={styles.input}  
-          placeholder="Gender" placeholderTextColor="#999" 
-          value={gender}
-          onChangeText={(text) => setGender(text)}
-        /> */}
-
-        {/* <Text style={[styles.input]}>
-          Gender
-        </Text> */}
         <Dropdown
           style={[styles.input, gFocus && { borderWidth: 1 }]}
           placeholderStyle={styles.placeholderStyle}
@@ -216,7 +221,7 @@ const SignUp = ({navigateToLogin, navigateToHome}) => {
           maxHeight={300}
           labelField="label"
           valueField="value"
-          placeholder={!gFocus ? 'Gender' : '...'}
+          placeholder='Gender'
           value={gender}
           onFocus={() => setgFocus(true)}
           onBlur={() => setgFocus(false)}
@@ -228,12 +233,15 @@ const SignUp = ({navigateToLogin, navigateToHome}) => {
 
 {/* ========================================================================== */}        
         {/* age (drop menu) */}
-        <TextInput style={styles.input} 
+        <TextInput style={[styles.input, !validAge && age ? styles.invalidInput : null]} 
           placeholder="Age" placeholderTextColor="#999" 
           value={age}
           onChangeText={(text) => setAge(text)}
           keyboardType="numeric"
         />
+        {!validAge && age && (
+        <Text style={styles.errorText}>Enter a valid age between 13 and 110.</Text>
+        )}
 {/* ========================================================================== */}        
         {/* password */}
         <TextInput style={[styles.input, !validPwd && pwd ? styles.invalidInput : null]} 
@@ -315,7 +323,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor:'#D32F2F',
     borderRadius: 25,
-    marginBottom: 15,
+    marginTop: 15,
     paddingHorizontal: 15,
     fontSize: 16,
     color: '#333',
@@ -328,6 +336,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,
+    marginTop: 20,
   },
   uploadButtonText: {
     color: '#fff',
@@ -382,15 +391,8 @@ const styles = StyleSheet.create({
     color: 'red',
     fontSize: 12,
     fontWeight: 'bold',
-    marginBottom: 4,
+    marginTop: 5,
   },
-  // dropdown: {
-  //   height: 50,
-  //   borderColor: 'gray',
-  //   borderWidth: 0.5,
-  //   borderRadius: 8,
-  //   paddingHorizontal: 8,
-  // },
   placeholderStyle: {
     fontSize: 16,
     color: "#999",
