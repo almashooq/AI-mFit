@@ -26,7 +26,7 @@ export default function Work({navigateToWelcome}) {
 
   const sendToServer = async (data) => {
     try {
-      const response = await fetch("https://9c2d-94-129-158-103.ngrok-free.app", {
+      const response = await fetch("https://3584-188-71-231-187.ngrok-free.app", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

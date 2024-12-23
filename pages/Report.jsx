@@ -21,15 +21,15 @@ const Report = ({navigateToHome, navigateToReport, navigateToProfile})=> {
             <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.button} onPress={navigateToReport}>
                 <Text style={styles.buttonText}>Workouts: Planks , Push ups , Burpees</Text>
-                <Text style={styles.buttonText}>Overall feedback: Great progress! Keep it up.</Text>
+                <Text style={styles.buttonText}>Overall feedback: Great progress.</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
               <Text style={styles.buttonText}>Workouts: Lunges , Burpees</Text>
-              <Text style={styles.buttonText}>Overall feedback: Good effort, aim for more consistency.</Text>
+              <Text style={styles.buttonText}>Overall feedback: Good effort.</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button}>
                 <Text style={styles.buttonText}>Workouts: Push ups , Squats</Text>
-                <Text style={styles.buttonText}>Overall feedback: Excellent work! You’re on track to hit your goals.</Text>
+                <Text style={styles.buttonText}>Overall feedback: Excellent work.</Text>
             </TouchableOpacity>
 
             </View>
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#FFFFFF',
-    fontSize: 27,
+    fontSize: 21,
     marginLeft: 30,
   },
   backArrow: {

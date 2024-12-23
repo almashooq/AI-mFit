@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity } from 'react-native';
 import logo from '../assets/logo.png';
+import back from '../assets/arrow.png';
 
 const exercises = [
   { id: 1, name: 'PLANKS', image: require('../assets/logo.png') },
@@ -15,8 +16,8 @@ const PreWorkout = ({ navigateToWelcome, navigateToWork }) => {
   return (
     <SafeAreaView style={styles.container}>
 
-      <TouchableOpacity onPress={navigateToWelcome} style={styles.backButton}>
-        <Text style={styles.backText}>BACK</Text>
+      <TouchableOpacity style={styles.backArrow} onPress={navigateToWelcome}>
+        <Image source={back} style={styles.backIcon} />
       </TouchableOpacity>
 
 
@@ -118,6 +119,13 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#FFF',
     marginTop: 10,
+  },
+  backArrow: {
+    position: "absolute",
+    paddingTop: 50,
+    paddingLeft: 20,
+    top: 0,
+    left: 0,
   },
 });
 

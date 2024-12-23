@@ -33,9 +33,9 @@
   ],
   "users": [
     {
-      "username": "user0",
-      "email": "user0email@gmail.com",
-      "password": "user0123",
+      "username": "test",
+      "email": "testemail@gmail.com",
+      "password": "test123",
       "height": "170",
       "weight": "80",
       "gender": "Male",
