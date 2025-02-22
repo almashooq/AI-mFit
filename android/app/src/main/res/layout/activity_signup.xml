@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@android:color/white"
+    android:padding="24dp">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="45dp"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="@drawable/icn_back_arrow"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:src="@drawable/logo"
+        android:contentDescription="AI Fit Logo"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Sign Up Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SIGN UP"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_blue_dark"
+        android:letterSpacing="0.1"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Subtitle -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CREATE YOUR ACCOUNT"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_blue_dark"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Username Input -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="USERNAME"
+        android:padding="12dp"
+        android:textAllCaps="true"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Email Input -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="EMAIL"
+        android:padding="12dp"
+        android:inputType="textEmailAddress"
+        android:textAllCaps="true"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Password Input -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="PASSWORD"
+        android:padding="12dp"
+        android:inputType="textPassword"
+        android:textAllCaps="true"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Confirm Number Input -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="CONFIRM Password"
+        android:padding="12dp"
+        android:inputType="phone"
+        android:textAllCaps="true"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Age"
+        android:padding="12dp"
+        android:inputType="phone"
+        android:textAllCaps="true"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="16dp" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Weight(kg)"
+        android:padding="12dp"
+        android:inputType="phone"
+        android:textAllCaps="true"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="16dp" />
+    <!-- Next Button -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="SIGN UP"
+        android:textColor="@android:color/white"
+        android:textAllCaps="true"
+        android:textSize="16sp" />
+
+</LinearLayout>

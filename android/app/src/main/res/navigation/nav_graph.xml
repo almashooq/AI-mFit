@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainActivity">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.google.mediapipe.examples.poselandmarker.MainActivity"
+        android:label="Main Activity">
+
+        <action
+            android:id="@+id/action_main_to_login"
+            app:destination="@id/loginActivity" />
+        <action
+            android:id="@+id/action_main_to_work"
+            app:destination="@id/workActivity" />
+    </activity>
+
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.google.mediapipe.examples.poselandmarker.LoginActivity"
+        android:label="Login">
+        <action
+            android:id="@+id/action_login_to_signup"
+            app:destination="@id/signupActivity" />
+        <action
+            android:id="@+id/action_login_to_main"
+            app:destination="@id/mainActivity"
+            app:popUpTo="@id/mainActivity"
+            app:popUpToInclusive="true" />
+    </activity>
+
+    <activity
+        android:id="@+id/signupActivity"
+        android:name="com.google.mediapipe.examples.poselandmarker.SignUpActivity"
+        android:label="Sign Up">
+        <action
+            android:id="@+id/action_signup_to_login"
+            app:destination="@id/loginActivity"
+            app:popUpTo="@id/loginActivity"
+            app:popUpToInclusive="true" />
+    </activity>
+
+    <activity
+        android:id="@+id/workActivity"
+        android:name="com.google.mediapipe.examples.poselandmarker.WorkActivity"
+        android:label="Work Activity">
+
+        <action
+            android:id="@+id/action_work_to_permissions"
+            app:destination="@id/permissionsFragment" />
+    </activity>
+
+    <fragment
+        android:id="@+id/permissionsFragment"
+        android:name="com.google.mediapipe.examples.poselandmarker.PermissionsFragment"
+        android:label="Permissions Fragment">
+
+        <action
+            android:id="@+id/action_permissions_to_camera"
+            app:destination="@id/cameraFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="com.google.mediapipe.examples.poselandmarker.CameraFragment"
+        android:label="Camera Fragment" />
+</navigation>
