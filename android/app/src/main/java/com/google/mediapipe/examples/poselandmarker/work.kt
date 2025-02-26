@@ -14,9 +14,12 @@ class WorkActivity : AppCompatActivity() {
         binding = ActivityWorkBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Setup NavHostFragment and NavController
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
         val navController = navHostFragment.navController
+
+        // Ensure BottomNavigationView works with Navigation Component
         binding.navigation.setupWithNavController(navController)
     }
 }

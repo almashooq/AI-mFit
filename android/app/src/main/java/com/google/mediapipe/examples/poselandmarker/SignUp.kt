@@ -12,6 +12,13 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        binding.toolbar.setNavigationOnClickListener {
+            finish()
+        }
+
         binding.toolbar.setNavigationOnClickListener {
             finish() // Return to LoginActivity
         }
