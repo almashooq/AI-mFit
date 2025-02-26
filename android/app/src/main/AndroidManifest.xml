@@ -37,8 +37,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-            <!-- Declare notch support -->
             <meta-data
                 android:name="android.notch_support"
                 android:value="true" />

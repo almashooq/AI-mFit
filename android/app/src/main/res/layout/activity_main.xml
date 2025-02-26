@@ -6,14 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Navigation Host Fragment -->
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/work_nav_host_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        app:navGraph="@navigation/nav_graph"
-        app:defaultNavHost="true"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+<!--    &lt;!&ndash; Navigation Host Fragment &ndash;&gt;-->
+<!--    <androidx.fragment.app.FragmentContainerView-->
+<!--        android:id="@+id/work_nav_host_fragment"-->
+<!--        android:name="androidx.navigation.fragment.NavHostFragment"-->
+<!--        app:navGraph="@navigation/nav_graph"-->
+<!--        app:defaultNavHost="true"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
 
 
     <!-- Video Background -->

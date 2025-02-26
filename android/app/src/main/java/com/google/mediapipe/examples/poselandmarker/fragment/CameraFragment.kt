@@ -73,7 +73,7 @@ class CameraFragment : Fragment(), PoseLandmarkerHelper.LandmarkerListener {
         // user could have removed them while the app was in paused state.
         if (!PermissionsFragment.hasPermissions(requireContext())) {
             Navigation.findNavController(
-                requireActivity(), R.id.work_nav_host_fragment
+                requireActivity(), R.id.fragment_container
             ).navigate(R.id.action_permissions_to_camera)
         }
 
