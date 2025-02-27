@@ -6,15 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<!--    &lt;!&ndash; Navigation Host Fragment &ndash;&gt;-->
-<!--    <androidx.fragment.app.FragmentContainerView-->
-<!--        android:id="@+id/work_nav_host_fragment"-->
-<!--        android:name="androidx.navigation.fragment.NavHostFragment"-->
-<!--        app:navGraph="@navigation/nav_graph"-->
-<!--        app:defaultNavHost="true"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"/>-->
-
 
     <!-- Video Background -->
     <VideoView
@@ -23,7 +14,12 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:scaleType="centerCrop"/>
-
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="App Logo"
+        android:src="@drawable/logo" />
     <!-- Overlay container to hold buttons -->
     <LinearLayout
         android:layout_width="match_parent"

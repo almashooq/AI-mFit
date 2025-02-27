@@ -21,6 +21,11 @@
             android:exported="false" />
         <activity
             android:parentActivityName=".LoginActivity"
+            android:name=".ResetPasswordActivity"
+            android:label="ResetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:parentActivityName=".LoginActivity"
             android:name=".SignUpActivity"
             android:exported="false"
             android:label="SignUpActivity" />

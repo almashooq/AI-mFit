@@ -19,10 +19,10 @@
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:src="@drawable/logo"
+        android:layout_height="90dp"
+        android:layout_marginBottom="24dp"
         android:contentDescription="AI Fit Logo"
-        android:layout_marginBottom="24dp" />
+        android:src="@drawable/logo" />
 
     <!-- Sign Up Title -->
     <TextView
@@ -111,6 +111,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="SIGN UP"
+        android:backgroundTint="@android:color/holo_blue_dark"
         android:textColor="@android:color/white"
         android:textAllCaps="true"
         android:textSize="16sp" />
