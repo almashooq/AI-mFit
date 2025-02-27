@@ -26,6 +26,21 @@
             android:exported="false" />
         <activity
             android:parentActivityName=".LoginActivity"
+            android:name=".HomeActivity"
+            android:label="HomeActivity"
+            android:exported="false" />
+        <activity
+            android:parentActivityName=".HomeActivity"
+            android:name=".ProfileActivity"
+            android:label="ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:parentActivityName=".MainActivity"
+            android:name=".PreworkoutActivity"
+            android:label="PreworkoutActivity"
+            android:exported="false" />
+        <activity
+            android:parentActivityName=".LoginActivity"
             android:name=".SignUpActivity"
             android:exported="false"
             android:label="SignUpActivity" />
