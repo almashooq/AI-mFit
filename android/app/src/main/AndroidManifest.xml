@@ -50,6 +50,11 @@
             android:exported="false"
             android:label="LoginActivity" />
         <activity
+            android:parentActivityName=".HomeActivity"
+            android:name=".RecentActivity"
+            android:exported="false"
+            android:label="RecentActivity" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
