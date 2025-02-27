@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
     app:startDestination="@id/permissions_fragment">
 
-    <!-- Permissions Fragment -->
     <fragment
         android:id="@+id/permissions_fragment"
         android:name="com.google.mediapipe.examples.poselandmarker.fragment.PermissionsFragment"
@@ -15,9 +15,9 @@
             app:destination="@id/camera_fragment"
             app:popUpTo="@id/permissions_fragment"
             app:popUpToInclusive="true" />
+
     </fragment>
 
-    <!-- Camera Fragment -->
     <fragment
         android:id="@+id/camera_fragment"
         android:name="com.google.mediapipe.examples.poselandmarker.fragment.CameraFragment"
@@ -29,5 +29,6 @@
             app:popUpTo="@id/camera_fragment"
             app:popUpToInclusive="true" />
     </fragment>
+
 
 </navigation>

@@ -37,6 +37,5 @@
             app:defaultNavHost="true"
             app:navGraph="@navigation/nav_graph"
             tools:context=".WorkActivity" />
-
     </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
