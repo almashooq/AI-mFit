@@ -102,4 +102,7 @@ dependencies {
 
     // MediaPipe Library
     implementation 'com.google.mediapipe:tasks-vision:0.10.14'
+
+    // GIF
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.22'
 }

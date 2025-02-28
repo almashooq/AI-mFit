@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.buttonTryAimfit.setOnClickListener {
-            val intent = Intent(this, WorkActivity::class.java)
+            val intent = Intent(this, PreworkoutActivity::class.java)
             startActivity(intent)
         }
         binding.buttonLogin.setOnClickListener {

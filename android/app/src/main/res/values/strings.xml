@@ -64,4 +64,15 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+    <!-- Preworkout -->
+    <string name="app_logo_description">App Logo</string>
+    <string name="planks">Planks</string>
+    <string name="squat">Squat</string>
+    <string name="push_ups">Push Ups</string>
+    <string name="burpees">Burpees</string>
+    <string name="crunches">Crunches</string>
+    <string name="lunges">Lunges</string>
+    <string name="button_next">Next</string>
+    <string name="warning_message">Warning: This model is designed to only recognize and assist with these workouts.</string>
 </resources>
