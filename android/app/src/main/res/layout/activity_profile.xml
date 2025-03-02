@@ -1,6 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@android:color/white"
+    android:padding="24dp">
+
+
+    <!-- Back Button -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="@drawable/icn_back_arrow"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <!-- Logo -->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="90dp"
+        android:layout_marginBottom="12dp"
+        android:contentDescription="AI Fit Logo"
+        android:src="@drawable/logo" />
+
+    <!-- Profile Image -->
+    <ImageView
+        android:layout_width="169dp"
+        android:layout_height="83dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Profile Picture"
+        android:src="@drawable/ic_profile" />
+
+    <!-- Hi Username Text -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HI Zahraa"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_blue_dark"
+        android:letterSpacing="0.1"
+        android:layout_marginBottom="12dp" />
+
+    <!-- User Information Fields -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="NAME: ZAHRAA EZZAT"
+        android:padding="12dp"
+        android:enabled="false"
+        android:textColorHint="@android:color/darker_gray"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="AGE: 22"
+        android:padding="12dp"
+        android:enabled="false"
+        android:textColorHint="@android:color/darker_gray"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="HEIGHT: 168CM"
+        android:padding="12dp"
+        android:enabled="false"
+        android:textColorHint="@android:color/darker_gray"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="WEIGHT: 77KG"
+        android:padding="12dp"
+        android:enabled="false"
+        android:textColorHint="@android:color/darker_gray"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="GENDER: FEMALE"
+        android:padding="12dp"
+        android:enabled="false"
+        android:textColorHint="@android:color/darker_gray"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Action Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="12dp">
+
+        <TextView
+            android:id="@+id/btn_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EDIT"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginEnd="24dp"
+            android:clickable="true" />
+
+        <TextView
+            android:id="@+id/btn_integrate_watch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="INTEGRATE WATCH"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginEnd="24dp"
+            android:clickable="true" />
+
+        <TextView
+            android:id="@+id/btn_brave_addon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BRAVE ADD ON"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"
+            android:clickable="true" />
+    </LinearLayout>
+
 
 </LinearLayout>
