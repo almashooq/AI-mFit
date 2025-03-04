@@ -30,7 +30,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.Loginbut.setOnClickListener {
-            finish()
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
         }
     }
 }

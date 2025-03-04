@@ -108,6 +108,7 @@
         android:layout_marginBottom="16dp" />
     <!-- Next Button -->
     <Button
+        android:id="@+id/signbtn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="SIGN UP"

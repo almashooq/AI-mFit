@@ -11,5 +11,12 @@ class RecentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRecentBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        binding.toolbar.setNavigationOnClickListener {
+            finish()
+        }
     }
 }

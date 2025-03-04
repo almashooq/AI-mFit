@@ -10,13 +10,13 @@
     android:background="@android:color/white"
     android:padding="24dp">
 
-    <!-- Back Button -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="wrap_content"
-        android:layout_height="?attr/actionBarSize"
-        app:navigationIcon="@drawable/icn_back_arrow"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+<!--    &lt;!&ndash; Back Button &ndash;&gt;-->
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/toolbar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        app:navigationIcon="@drawable/icn_back_arrow"-->
+<!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
 
     <!-- Logo -->
     <ImageView
@@ -38,7 +38,7 @@
         android:layout_marginBottom="12dp" />
 
     <Button
-        android:id="@+id/btn_work"
+        android:id="@+id/btnwork"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@android:color/darker_gray"
@@ -50,6 +50,7 @@
         android:layout_margin="16dp" />
 
     <Button
+        android:id="@+id/btnrecent"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@android:color/darker_gray"
@@ -62,6 +63,7 @@
 
     <!-- Profile Image -->
     <ImageView
+        android:id="@+id/btnprofile"
         android:layout_width="85dp"
         android:layout_height="68dp"
         android:layout_marginBottom="16dp"

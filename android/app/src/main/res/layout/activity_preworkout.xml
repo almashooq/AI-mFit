@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/root"
+<LinearLayout android:id="@+id/root"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
     android:background="@android:color/white"
-    android:padding="24dp">
+    android:padding="24dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- GIFs -->
     <androidx.cardview.widget.CardView
         android:id="@+id/top_view"
         android:layout_width="match_parent"
@@ -27,11 +30,10 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
     </androidx.cardview.widget.CardView>
 
-    <!-- GIFs -->
     <GridLayout
         android:id="@+id/gifgrid"
         android:layout_width="346dp"
-        android:layout_height="598dp"
+        android:layout_height="490dp"
         android:layout_below="@id/top_view"
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp"
@@ -40,7 +42,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
             android:layout_row="0"
             android:layout_rowWeight="1"
             android:layout_column="0"
@@ -54,11 +56,11 @@
 
                 <!-- GIFs -->
                 <ImageView
-                    android:contentDescription="@string/planks"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
                     android:background="#fff"
+                    android:contentDescription="@string/planks"
                     android:src="@drawable/planks" />
 
                 <TextView
@@ -74,7 +76,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
             android:layout_row="0"
             android:layout_rowWeight="1"
             android:layout_column="1"
@@ -87,11 +89,11 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:contentDescription="@string/squat"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
                     android:background="#fff"
+                    android:contentDescription="@string/squat"
                     android:src="@drawable/squat" />
 
                 <TextView
@@ -107,7 +109,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
             android:layout_row="1"
             android:layout_rowWeight="1"
             android:layout_column="0"
@@ -121,11 +123,11 @@
 
                 <!-- GIFs -->
                 <ImageView
-                    android:contentDescription="@string/push_ups"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
                     android:background="#fff"
+                    android:contentDescription="@string/push_ups"
                     android:src="@drawable/pushups" />
 
                 <TextView
@@ -141,7 +143,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
             android:layout_row="1"
             android:layout_rowWeight="1"
             android:layout_column="1"
@@ -155,11 +157,11 @@
 
                 <!-- GIFs -->
                 <ImageView
-                    android:contentDescription="@string/burpees"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
                     android:background="#fff"
+                    android:contentDescription="@string/burpees"
                     android:src="@drawable/burpees" />
 
                 <TextView
@@ -175,7 +177,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
             android:layout_row="2"
             android:layout_rowWeight="1"
             android:layout_column="0"
@@ -189,11 +191,11 @@
 
                 <!-- GIFs -->
                 <ImageView
-                    android:contentDescription="@string/crunches"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
                     android:background="#fff"
+                    android:contentDescription="@string/crunches"
                     android:src="@drawable/crunches" />
 
                 <TextView
@@ -209,7 +211,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
             android:layout_row="2"
             android:layout_rowWeight="1"
             android:layout_column="1"
@@ -223,11 +225,11 @@
 
                 <!-- GIFs -->
                 <ImageView
-                    android:contentDescription="@string/lunges"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
                     android:background="#fff"
+                    android:contentDescription="@string/lunges"
                     android:src="@drawable/lunges" />
 
                 <TextView
@@ -248,7 +250,6 @@
         android:id="@+id/buttonNext"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
         android:backgroundTint="@android:color/holo_blue_dark"
         android:text="@string/button_next"
         android:textColor="@android:color/white"
@@ -262,6 +263,6 @@
         android:textSize="14sp"
         android:textColor="@android:color/holo_blue_dark"
         android:textStyle="bold"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="0dp"
         android:text="@string/warning_message" />
-</RelativeLayout>
+</LinearLayout>
