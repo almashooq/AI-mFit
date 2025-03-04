@@ -18,5 +18,10 @@ class RecentActivity : AppCompatActivity() {
         binding.toolbar.setNavigationOnClickListener {
             finish()
         }
+/*
+        var recentworkouts = mutableListOf(
+        )
+        
+ */
     }
 }
