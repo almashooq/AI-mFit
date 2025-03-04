@@ -71,6 +71,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
     implementation 'androidx.activity:activity:1.7.2'
+    implementation 'androidx.recyclerview:recyclerview:1.4.0'
 
     // Navigation library
     def nav_version = "2.5.3"
