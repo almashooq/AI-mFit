@@ -250,7 +250,7 @@
         android:id="@+id/buttonNext"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:backgroundTint="@android:color/holo_blue_dark"
+        android:backgroundTint="#9aa6b2"
         android:text="@string/button_next"
         android:textColor="@android:color/white"
         android:layout_below="@id/gifgrid" />

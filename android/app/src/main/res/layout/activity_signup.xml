@@ -107,7 +107,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="Sign Up"
-        android:backgroundTint="@android:color/holo_blue_dark"
+        android:backgroundTint="#9aa6b2"
         android:textColor="@android:color/white"
         android:id="@+id/signbtn"
         android:layout_marginBottom="16dp" />

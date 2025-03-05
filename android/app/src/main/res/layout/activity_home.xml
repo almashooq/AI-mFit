@@ -18,13 +18,24 @@
 <!--        app:navigationIcon="@drawable/icn_back_arrow"-->
 <!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
 
-    <!-- Logo -->
+    <!--arrow-->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="@drawable/icn_back_arrow"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:title=""/>
+
+    <!--logo-->
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="90dp"
-        android:layout_marginBottom="12dp"
-        android:contentDescription="AI Fit Logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="-50dp"
+        android:contentDescription="@string/app_logo_description"
         android:src="@drawable/logo" />
+
 
     <!-- Text -->
     <TextView
@@ -41,7 +52,7 @@
         android:id="@+id/btnwork"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@android:color/darker_gray"
+        android:backgroundTint="#9aa6b2"
         android:text="WORK"
         android:textSize="18sp"
         android:textColor="@android:color/white"
@@ -53,13 +64,14 @@
         android:id="@+id/btnrecent"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@android:color/darker_gray"
+        android:backgroundTint="#9aa6b2"
         android:text="Check workouts reports"
         android:textSize="18sp"
         android:textColor="@android:color/white"
         android:textStyle="bold"
         android:gravity="center"
-        android:layout_margin="16dp" />
+        android:layout_margin="16dp"
+        android:layout_marginBottom="20dp" />
 
     <!-- Profile Image -->
     <ImageView
