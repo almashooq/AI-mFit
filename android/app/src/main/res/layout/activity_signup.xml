@@ -10,111 +10,106 @@
     android:padding="24dp">
 
 
+    <!--arrow-->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="45dp"
+        android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:navigationIcon="@drawable/icn_back_arrow"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:title=""/>
 
+    <!--logo-->
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="90dp"
-        android:layout_marginBottom="24dp"
-        android:contentDescription="AI Fit Logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="-50dp"
+        android:contentDescription="@string/app_logo_description"
         android:src="@drawable/logo" />
 
-    <!-- Sign Up Title -->
+
+    <!-- Signup Title -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SIGN UP"
-        android:textSize="22sp"
+        android:text="Sign Up"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@android:color/holo_blue_dark"
-        android:letterSpacing="0.1"
-        android:layout_marginBottom="12dp" />
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="16dp" />
 
     <!-- Subtitle -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CREATE YOUR ACCOUNT"
+        android:text="Create a New Accaount"
         android:textSize="14sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@android:color/darker_gray"
         android:layout_marginBottom="16dp" />
 
     <!-- Username Input -->
     <EditText
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="USERNAME"
+        android:hint="Username"
         android:padding="12dp"
-        android:textAllCaps="true"
-        android:textColor="@android:color/black"
+        android:inputType="text"
         android:layout_marginBottom="12dp" />
 
     <!-- Email Input -->
     <EditText
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="EMAIL"
+        android:hint="Email"
         android:padding="12dp"
         android:inputType="textEmailAddress"
-        android:textAllCaps="true"
-        android:textColor="@android:color/black"
         android:layout_marginBottom="12dp" />
 
     <!-- Password Input -->
     <EditText
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="PASSWORD"
+        android:hint="Password"
         android:padding="12dp"
         android:inputType="textPassword"
-        android:textAllCaps="true"
-        android:textColor="@android:color/black"
         android:layout_marginBottom="12dp" />
 
-    <!-- Confirm Number Input -->
+    <!-- Confirm Password Input -->
     <EditText
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="CONFIRM Password"
         android:padding="12dp"
-        android:inputType="phone"
-        android:textAllCaps="true"
-        android:textColor="@android:color/black"
+        android:inputType="textPassword"
         android:layout_marginBottom="16dp" />
 
+    <!-- Age Input -->
     <EditText
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="Age"
+        android:hint="Your Age"
         android:padding="12dp"
-        android:inputType="phone"
-        android:textAllCaps="true"
-        android:textColor="@android:color/black"
-        android:layout_marginBottom="16dp" />
+        android:inputType="number"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Weight Input -->
     <EditText
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="Weight(kg)"
+        android:hint="Your Weight"
         android:padding="12dp"
-        android:inputType="phone"
-        android:textAllCaps="true"
-        android:textColor="@android:color/black"
-        android:layout_marginBottom="16dp" />
-    <!-- Next Button -->
+        android:inputType="number"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Sign Up Button -->
     <Button
-        android:id="@+id/signbtn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="SIGN UP"
+        android:text="Sign Up"
         android:backgroundTint="@android:color/holo_blue_dark"
         android:textColor="@android:color/white"
-        android:textAllCaps="true"
-        android:textSize="16sp" />
+        android:id="@+id/signbtn"
+        android:layout_marginBottom="16dp" />
 
 </LinearLayout>

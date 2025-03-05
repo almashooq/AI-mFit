@@ -14,6 +14,7 @@ class PreworkoutActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = ""
 
         binding.toolbar.setNavigationOnClickListener {
             finish()
