@@ -16,6 +16,7 @@ class ResetPasswordActivity : AppCompatActivity() {
         // Setup Toolbar with Back Navigation
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = ""
 
         binding.toolbar.setNavigationOnClickListener {
             finish() // Go back to previous screen

@@ -22,7 +22,7 @@ plugins {
 
 android {
     namespace 'com.google.mediapipe.examples.poselandmarker'
-    compileSdk 33
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.google.mediapipe.examples.poselandmarker"
@@ -50,6 +50,7 @@ android {
 
     buildFeatures {
         viewBinding true
+        buildConfig true
     }
 }
 
