@@ -4,14 +4,10 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-03-04T09:33:39.757995Z">
+        <DropdownSelection timestamp="2025-03-29T19:34:19.263929600Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-<<<<<<< Updated upstream
               <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\ASUS\.android\avd\Pixel_5_API_33.avd" />
-=======
-              <DeviceId pluginId="PhysicalDevice" identifier="serial=RZCW115P4SD" />
->>>>>>> Stashed changes
             </handle>
           </Target>
         </DropdownSelection>

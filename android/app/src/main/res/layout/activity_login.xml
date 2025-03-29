@@ -50,15 +50,17 @@
 
     <!-- Username/Email Input -->
     <EditText
+        android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="Username/Email"
+        android:hint="Username"
         android:padding="12dp"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         android:layout_marginBottom="12dp" />
 
     <!-- Password Input -->
     <EditText
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="Password"

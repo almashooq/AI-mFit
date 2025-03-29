@@ -5,6 +5,9 @@
     <uses-feature android:name="android.hardware.camera" /> <!-- Declare permissions -->
     <uses-permission android:name="android.permission.CAMERA" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,6 +22,11 @@
             android:name=".WorkActivity"
             android:label="WorkActivity"
             android:exported="false" />
+        <activity
+            android:parentActivityName=".MainActivity"
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:label="LoginActivity" />
         <activity
             android:parentActivityName=".LoginActivity"
             android:name=".ResetPasswordActivity"
@@ -44,11 +52,6 @@
             android:name=".SignUpActivity"
             android:exported="false"
             android:label="SignUpActivity" />
-        <activity
-            android:parentActivityName=".MainActivity"
-            android:name=".LoginActivity"
-            android:exported="false"
-            android:label="LoginActivity" />
         <activity
             android:parentActivityName=".HomeActivity"
             android:name=".RecentActivity"

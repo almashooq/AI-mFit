@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "604735572440",
+    "firebase_url": "https://ai-m-fit-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "ai-m-fit",
+    "storage_bucket": "ai-m-fit.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:604735572440:android:c38abf5266c2080d81caad",
+        "android_client_info": {
+          "package_name": "com.google.mediapipe.examples.poselandmarker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBok_MyE197wNmA03mdxvXJ1VMu1UKkxkA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -18,14 +18,14 @@
 <!--        app:navigationIcon="@drawable/icn_back_arrow"-->
 <!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
 
-    <!--arrow-->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:navigationIcon="@drawable/icn_back_arrow"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:title=""/>
+<!--    &lt;!&ndash;arrow&ndash;&gt;-->
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        app:navigationIcon="@drawable/icn_back_arrow"-->
+<!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+<!--        android:title=""/>-->
 
     <!--logo-->
     <ImageView

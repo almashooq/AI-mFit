@@ -22,9 +22,9 @@
     <!--logo-->
     <ImageView
         android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginBottom="20dp"
+        android:layout_height="96dp"
         android:layout_marginTop="-50dp"
+        android:layout_marginBottom="20dp"
         android:contentDescription="@string/app_logo_description"
         android:src="@drawable/logo" />
 
@@ -50,6 +50,7 @@
 
     <!-- Username Input -->
     <EditText
+        android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="Username"
@@ -59,6 +60,7 @@
 
     <!-- Email Input -->
     <EditText
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="Email"
@@ -68,6 +70,7 @@
 
     <!-- Password Input -->
     <EditText
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="Password"
@@ -75,17 +78,9 @@
         android:inputType="textPassword"
         android:layout_marginBottom="12dp" />
 
-    <!-- Confirm Password Input -->
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="CONFIRM Password"
-        android:padding="12dp"
-        android:inputType="textPassword"
-        android:layout_marginBottom="16dp" />
-
     <!-- Age Input -->
     <EditText
+        android:id="@+id/age"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="Your Age"
@@ -93,8 +88,30 @@
         android:inputType="number"
         android:layout_marginBottom="12dp" />
 
+    <!-- gender Input -->
+    <EditText
+        android:id="@+id/gender"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Your gender (M/F)"
+        android:padding="12dp"
+        android:inputType="text"
+        android:layout_marginBottom="12dp" />
+
+
+    <!-- Height Input -->
+    <EditText
+        android:id="@+id/height"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Your Weight"
+        android:padding="12dp"
+        android:inputType="number"
+        android:layout_marginBottom="16dp" />
+
     <!-- Weight Input -->
     <EditText
+        android:id="@+id/weight"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="Your Weight"

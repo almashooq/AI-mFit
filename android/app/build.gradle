@@ -18,6 +18,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'de.undercouch.download'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -73,6 +74,10 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
     implementation 'androidx.activity:activity:1.7.2'
     implementation 'androidx.recyclerview:recyclerview:1.4.0'
+
+    // firebase
+    implementation 'com.google.firebase:firebase-database:21.0.0'
+    implementation 'com.google.firebase:firebase-analytics:21.3.0'
 
     // Navigation library
     def nav_version = "2.5.3"
