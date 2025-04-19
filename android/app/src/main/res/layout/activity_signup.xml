@@ -104,7 +104,7 @@
         android:id="@+id/height"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="Your Weight"
+        android:hint="Your Height"
         android:padding="12dp"
         android:inputType="number"
         android:layout_marginBottom="16dp" />

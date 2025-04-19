@@ -7,10 +7,7 @@
     android:gravity="center"
     android:background="@android:color/white"
     android:padding="24dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-
-    <!--arrow-->
+    xmlns:app="http://schemas.android.com/apk/res-auto">563241
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"

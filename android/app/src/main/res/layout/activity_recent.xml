@@ -55,7 +55,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="WORKOUT:"
+                android:text="Date: 17/3/2025           Time: 5min"
                 android:textSize="18sp"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
@@ -64,7 +64,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="OVERALL FEEDBACK:"
+                android:text="Squat: 20                       Lunges: 10"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OVERALL FEEDBACK: "
                 android:textSize="18sp"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
@@ -89,7 +98,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="WORKOUT:"
+                android:text="Date: 1/2/2025           Time: 2min"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Squat: 5                       Pushups: 7"
                 android:textSize="18sp"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
