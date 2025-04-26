@@ -73,7 +73,21 @@ class LoginActivity : AppCompatActivity() {
                     val userData = dataSnapshot.getValue(User::class.java)
                     if (userData != null && userData.password == password) {
                         Toast.makeText(this@LoginActivity, "Login Successful!", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
+                        // Save to SharedPreferences
+                        val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
+                        val editor = sharedPref.edit()
+                        editor.putString("username", username)
+                        editor.putString("password", userData.password)
+                        editor.putString("email", userData.email)
+                        editor.putInt("age", userData.age)
+                        editor.putString("gender", userData.gender)
+                        editor.putInt("height", userData.height)
+                        editor.putInt("weight", userData.weight)
+                        editor.apply()
+
+                        // Navigate to profile
+                        val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                        startActivity(intent)
                         finish()
                     } else {
                         Toast.makeText(this@LoginActivity, "Login failed! Wrong password.", Toast.LENGTH_SHORT).show()

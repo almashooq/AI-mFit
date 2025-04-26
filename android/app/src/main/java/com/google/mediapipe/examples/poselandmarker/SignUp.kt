@@ -92,8 +92,23 @@ class SignUpActivity : AppCompatActivity() {
                     //val userData = User (password = password, email = email, age = age, gender = gender, height = height, weight = weight, picture = "dummyProfile.png", statistics = emptyList())
                     databaseReference.child(username).setValue(userData)
                     Toast.makeText(this@SignUpActivity, "Signup successful!", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this@SignUpActivity, HomeActivity::class.java))
+
+
+                    val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
+                    val editor = sharedPref.edit()
+                    editor.putString("username", username)
+                    editor.putString("password", password)
+                    editor.putString("email", email)
+                    editor.putInt("age", age)
+                    editor.putString("gender", gender)
+                    editor.putInt("height", height)
+                    editor.putInt("weight", weight)
+                    editor.apply()
+
+                    val intent = Intent(this@SignUpActivity, HomeActivity::class.java)
+                    startActivity(intent)
                     finish()
+
                 }
                 //username not unique
                 else {

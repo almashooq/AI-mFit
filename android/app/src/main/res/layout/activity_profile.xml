@@ -39,6 +39,7 @@
 
     <!-- Hi Username Text -->
     <TextView
+        android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="HI Zahraa"
@@ -59,6 +60,7 @@
 <!--        android:layout_marginBottom="8dp" />-->
 
     <EditText
+        android:id="@+id/tvage"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="AGE: 22"
@@ -68,6 +70,7 @@
         android:layout_marginBottom="8dp" />
 
     <EditText
+        android:id="@+id/tvheight"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="HEIGHT: 168CM"
@@ -77,6 +80,7 @@
         android:layout_marginBottom="8dp" />
 
     <EditText
+        android:id="@+id/tvweight"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="WEIGHT: 77KG"
@@ -86,6 +90,7 @@
         android:layout_marginBottom="8dp" />
 
     <EditText
+        android:id="@+id/tvgender"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="GENDER: FEMALE"
