@@ -17,12 +17,16 @@ package com.google.mediapipe.examples.poselandmarker.fragment
 
 import android.annotation.SuppressLint
 import android.content.res.Configuration
+import com.google.firebase.database.FirebaseDatabase
 import android.os.Bundle
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.content.Context
 import android.widget.AdapterView
+import android.widget.Button
 import android.widget.Toast
 import androidx.camera.core.Preview
 import androidx.camera.core.CameraSelector
@@ -41,6 +45,11 @@ import com.google.mediapipe.examples.poselandmarker.R
 import com.google.mediapipe.examples.poselandmarker.TFLiteClassifier
 import com.google.mediapipe.examples.poselandmarker.databinding.FragmentCameraBinding
 import com.google.mediapipe.tasks.vision.core.RunningMode
+import com.google.mediapipe.examples.poselandmarker.WorkoutEntry
+import com.google.mediapipe.examples.poselandmarker.HomeActivity
+import com.google.mediapipe.examples.poselandmarker.MainActivity
+import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -118,6 +127,7 @@ class CameraFragment : Fragment(), PoseLandmarkerHelper.LandmarkerListener {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View {
         _fragmentCameraBinding =
             FragmentCameraBinding.inflate(inflater, container, false)
@@ -153,6 +163,54 @@ class CameraFragment : Fragment(), PoseLandmarkerHelper.LandmarkerListener {
         poseClassifier = TFLiteClassifier(requireContext())
         // Attach listeners to UI control widgets
 //        initBottomSheetControls()
+        val endButton = view.findViewById<Button>(R.id.endWorkoutButton)
+        endButton.setOnClickListener {
+            val session = requireContext().getSharedPreferences("UserSession", Context.MODE_PRIVATE)
+            val username = session.getString("username", null)
+
+            if (username != null && username != "guest") {
+                val workoutPrefs = requireContext().getSharedPreferences("CurrentWorkout", Context.MODE_PRIVATE)
+                val database = FirebaseDatabase.getInstance().reference
+                val statsRef = database.child("Users").child(username).child("statistics")
+
+                val labelToIndex = mapOf(
+                    "standing" to "0",
+                    "squat" to "1",
+                    "plank" to "2",
+                    "jumpingjacks" to "3",
+                    "crunch" to "4",
+                    "forwardbend" to "5",
+                    "lunge" to "6"
+                )
+
+                val countMap = mutableMapOf<String, Any>()
+                for ((key, value) in workoutPrefs.all) {
+                    if (key.startsWith("count_")) {
+                        val label = key.removePrefix("count_").lowercase()
+                        val index = labelToIndex[label]
+                        if (index != null) {
+                            countMap[index] = value as Int
+                        }
+                    }
+                }
+
+                val now = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault()).format(Date())
+
+                val data = mapOf(
+                    "count" to countMap,
+                    "date" to now,
+                    "time" to 5 // or replace with actual duration if needed
+                )
+
+                statsRef.push().setValue(data)
+                workoutPrefs.edit().clear().apply()
+
+                startActivity(Intent(requireContext(), HomeActivity::class.java))
+            } else {
+                startActivity(Intent(requireContext(), MainActivity::class.java))
+            }
+        }
+
     }
 
 //    private fun initBottomSheetControls() {
@@ -420,9 +478,28 @@ class CameraFragment : Fragment(), PoseLandmarkerHelper.LandmarkerListener {
                     val output = poseClassifier.predict(input)
                     val predictedIndex = output.indices.maxByOrNull { output[it] } ?: -1
                     label = poseClassifier.labels[predictedIndex]
+
+
+
+                    val session = requireContext().getSharedPreferences("UserSession", Context.MODE_PRIVATE)
+                    val username = session.getString("username", null)
+
+                    if (username != null && username != "guest") {
+                        val workoutPrefs = requireContext().getSharedPreferences("CurrentWorkout", Context.MODE_PRIVATE)
+                        val now = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault()).format(Date())
+
+                        val labelKey = "count_$label"
+                        val prevCount = workoutPrefs.getInt(labelKey, 0)
+                        workoutPrefs.edit()
+                            .putInt(labelKey, prevCount + 1)
+                            .putString("start_time", now)
+                            .apply()
+                    }
+
                 }
 
-                // Draw landmarks and label
+
+                    // Draw landmarks and label
                 fragmentCameraBinding.overlay.setResults(
                     poseResult,
                     resultBundle.inputImageHeight,

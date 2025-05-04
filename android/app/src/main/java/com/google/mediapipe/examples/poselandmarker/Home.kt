@@ -35,4 +35,11 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
+        sharedPref.edit().clear().apply()
+    }
+
 }

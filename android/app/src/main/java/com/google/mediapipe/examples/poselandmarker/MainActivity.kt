@@ -32,6 +32,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.buttonTryAimfit.setOnClickListener {
+            val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
+            sharedPref.edit().putString("username", "guest").apply()
             val intent = Intent(this, PreworkoutActivity::class.java)
             startActivity(intent)
         }
