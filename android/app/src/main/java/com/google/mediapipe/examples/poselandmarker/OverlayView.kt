@@ -28,12 +28,16 @@ import com.google.mediapipe.tasks.vision.poselandmarker.PoseLandmarkerResult
 import kotlin.math.max
 import kotlin.math.min
 
+
+
 class OverlayView(context: Context?, attrs: AttributeSet?) :
     View(context, attrs) {
 
     private var results: PoseLandmarkerResult? = null
     private var pointPaint = Paint()
     private var linePaint = Paint()
+
+    private var poseLabel: String = ""
 
     private var scaleFactor: Float = 1f
     private var imageWidth: Int = 1
@@ -61,7 +65,10 @@ class OverlayView(context: Context?, attrs: AttributeSet?) :
         pointPaint.strokeWidth = LANDMARK_STROKE_WIDTH
         pointPaint.style = Paint.Style.FILL
     }
-
+    fun setPoseLabel(label: String) {
+        poseLabel = label
+        invalidate()
+    }
     override fun draw(canvas: Canvas) {
         super.draw(canvas)
         results?.let { poseLandmarkerResult ->
@@ -82,6 +89,14 @@ class OverlayView(context: Context?, attrs: AttributeSet?) :
                         poseLandmarkerResult.landmarks().get(0).get(it.end()).y() * imageHeight * scaleFactor,
                         linePaint)
                 }
+
+                val labelPaint = Paint().apply {
+                    color = Color.RED
+                    textSize = 64f
+                    textAlign = Paint.Align.CENTER
+                }
+                canvas.drawText(poseLabel, width / 2f, height - 100f, labelPaint)
+
             }
         }
     }
@@ -111,6 +126,8 @@ class OverlayView(context: Context?, attrs: AttributeSet?) :
         }
         invalidate()
     }
+
+
 
     companion object {
         private const val LANDMARK_STROKE_WIDTH = 12F
