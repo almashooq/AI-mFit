@@ -1,5 +1,6 @@
-#test_correction.py
+# squat_correction.py
 # this code: opens a video (using cv2.VideoCapture) -> MediaPipe detects body landmarks -> it reads the video frame by frame in a loop -> it passes each frame into MediaPipe to detect human body pose landmarks -> it gives 33 landmark point and these are converted into a list of coordinates (x,y) -> landmark list is sent to correction_checker function
+
 
 import cv2
 import mediapipe as mp
