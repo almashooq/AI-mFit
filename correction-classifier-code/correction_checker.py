@@ -54,6 +54,34 @@ def correction_checker(exercise_type, pose_landmarks, bending_leg=None):
                 return "correct"
             else:
                 return "incorrect"
+    elif exercise_type == "forward_bend":
+        # Extract key landmarks
+        left_shoulder = pose_landmarks[11]
+        right_shoulder = pose_landmarks[12]
+        left_hip = pose_landmarks[23]
+        right_hip = pose_landmarks[24]
+        left_knee = pose_landmarks[25]
+        right_knee = pose_landmarks[26]
+        left_ankle = pose_landmarks[27]
+        right_ankle = pose_landmarks[28]
+        
+        # Calculate spine-to-leg angle (hip flexion)
+        left_spine_leg_angle = calculate_angle(left_shoulder, left_hip, left_knee)
+        right_spine_leg_angle = calculate_angle(right_shoulder, right_hip, right_knee)
+        hip_flexion_angle = (left_spine_leg_angle + right_spine_leg_angle) / 2
+        
+        # Calculate knee extension (how straight the legs are)
+        left_knee_angle = calculate_angle(left_hip, left_knee, left_ankle)
+        right_knee_angle = calculate_angle(right_hip, right_knee, right_ankle)
+        knee_angle = (left_knee_angle + right_knee_angle) / 2
+            
+        # Criteria for a correct forward bend:
+        # 1. Hip flexion angle between 30-90 degrees (bent forward enough)
+        # 2. Knees relatively straight (150-180 degrees)
+        if (30 <= hip_flexion_angle <= 90) and (150 <= knee_angle <= 180):
+            return "correct"
+        else:
+            return "incorrect"
             
     elif exercise_type == "crunch":
         # Define landmarks for shoulders, hips, and knees

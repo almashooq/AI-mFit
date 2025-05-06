@@ -480,7 +480,7 @@ class CameraFragment : Fragment(), PoseLandmarkerHelper.LandmarkerListener {
                     label = poseClassifier.labels[predictedIndex]
 
 
-
+                    fragmentCameraBinding.labelTextt.text = "Detected Pose: $label"
                     val session = requireContext().getSharedPreferences("UserSession", Context.MODE_PRIVATE)
                     val username = session.getString("username", null)
 
@@ -494,6 +494,7 @@ class CameraFragment : Fragment(), PoseLandmarkerHelper.LandmarkerListener {
                             .putInt(labelKey, prevCount + 1)
                             .putString("start_time", now)
                             .apply()
+
                     }
 
                 }
@@ -508,6 +509,7 @@ class CameraFragment : Fragment(), PoseLandmarkerHelper.LandmarkerListener {
                 )
                 fragmentCameraBinding.overlay.setPoseLabel(label)
                 fragmentCameraBinding.overlay.invalidate()
+
             }
         }
     }

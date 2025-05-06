@@ -30,6 +30,16 @@
         android:id="@+id/overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    <TextView
+        android:id="@+id/labelTextt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detected Pose: "
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
     <Button
         android:id="@+id/endWorkoutButton"
         android:layout_width="250dp"
