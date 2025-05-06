@@ -127,14 +127,14 @@
                     android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
                     android:background="#fff"
-                    android:contentDescription="@string/push_ups"
+                    android:contentDescription="p"
                     android:src="@drawable/pushups" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="@string/push_ups"
+                    android:text="Bend"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -168,7 +168,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="@string/burpees"
+                    android:text="JumpingJacks"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />

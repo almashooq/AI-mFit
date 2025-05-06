@@ -1,8 +1,6 @@
 package com.google.mediapipe.examples.poselandmarker
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DataSnapshot
@@ -59,20 +57,16 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        //------------ home ---------------------------------------------------------------//
-//        binding.Loginbut.setOnClickListener {
-//            val intent = Intent(this, HomeActivity::class.java)
-//            startActivity(intent)
-//        }
     }
 
     private fun loginUser(username: String, password: String) {
         databaseReference.child(username).addListenerForSingleValueEvent(object : ValueEventListener {
+
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
                     val userData = dataSnapshot.getValue(User::class.java)
                     if (userData != null && userData.password == password) {
-                        Toast.makeText(this@LoginActivity, "Login Successful!", Toast.LENGTH_SHORT).show()
+
                         // Save to SharedPreferences
                         val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
                         val editor = sharedPref.edit()
@@ -85,7 +79,7 @@ class LoginActivity : AppCompatActivity() {
                         editor.putInt("weight", userData.weight)
                         editor.apply()
 
-                        // Navigate to profile
+
                         val intent = Intent(this@LoginActivity, HomeActivity::class.java)
                         startActivity(intent)
                         finish()
