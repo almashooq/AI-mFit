@@ -115,7 +115,7 @@ class CorrectionChecker {
         val left = calculateAngle(leftShoulderX, leftShoulderY, leftHipX, leftHipY, leftKneeX, leftKneeY)
         val right = calculateAngle(rightShoulderX, rightShoulderY, rightHipX, rightHipY, rightKneeX, rightKneeY)
         val avg = (left + right) / 2
-        val correct = avg in 55.0..85.0
+        val correct = avg in 100.0..130.0
         return correct to (if (correct) "Correct: " else "Incorrect: ") + "Crunch curl angle: %.1f°".format(avg)
     }
 
