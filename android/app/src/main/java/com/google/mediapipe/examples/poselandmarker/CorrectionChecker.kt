@@ -116,6 +116,10 @@ class CorrectionChecker {
         val right = calculateAngle(rightShoulderX, rightShoulderY, rightHipX, rightHipY, rightKneeX, rightKneeY)
         val avg = (left + right) / 2
         val correct = avg in 100.0..130.0
+        val feedback = mutableListOf<String>()
+        if (avg > 130) {
+            feedback.add("❌ Raise your upper body")
+        }
         return correct to (if (correct) "Correct: " else "Incorrect: ") + "Crunch curl angle: %.1f°".format(avg)
     }
 
