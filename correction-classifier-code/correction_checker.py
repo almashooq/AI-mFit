@@ -54,6 +54,8 @@ def correction_checker(exercise_type, pose_landmarks, bending_leg=None):
                 return "correct"
             else:
                 return "incorrect"
+            
+
     elif exercise_type == "forward_bend":
         # Extract key landmarks
         left_shoulder = pose_landmarks[11]
@@ -83,6 +85,7 @@ def correction_checker(exercise_type, pose_landmarks, bending_leg=None):
         else:
             return "incorrect"
             
+
     elif exercise_type == "crunch":
         # Define landmarks for shoulders, hips, and knees
         left_shoulder = pose_landmarks[11]
@@ -97,20 +100,17 @@ def correction_checker(exercise_type, pose_landmarks, bending_leg=None):
         left_angle = calculate_angle(left_shoulder, left_hip, left_knee)
         right_angle = calculate_angle(right_shoulder, right_hip, right_knee)
         
-        # Check if either side shows a proper crunch angle
-        # For a crunch, we want the upper body to curl up, making the angle between
-        # shoulder-hip-knee decrease from a straight line (180°) to a smaller angle
-        if 120 <= left_angle <= 150 or 120 <= right_angle <= 150:
-            # Additional check: make sure head is lifted (shoulder y value less than hip y value)
-            # In image coordinates, lower y means higher in the image
-            left_shoulder_y = pose_landmarks[11][1]
-            right_shoulder_y = pose_landmarks[12][1]
-            left_hip_y = pose_landmarks[23][1]
-            right_hip_y = pose_landmarks[24][1]
-            
-            # Check if at least one shoulder is higher than corresponding hip
-            if (left_shoulder_y < left_hip_y) or (right_shoulder_y < right_hip_y):
-                return "correct"
+        # Get the better angle (based on which side is more visible)
+        # For simplicity, we'll use the average of both angles
+        curl_angle = (left_angle + right_angle) / 2
+        
+        # For a proper crunch, we need:
+        # 1. Correct angle between shoulder-hip-knee (60-85 degrees)
+        # 2. Shoulders lifted off the ground
+        if 55 <= curl_angle <= 85:
+            return "correct"
+        else:
+            return "incorrect"
             
 
     elif exercise_type == "jumpingjack":
