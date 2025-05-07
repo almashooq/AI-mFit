@@ -111,23 +111,62 @@ def correction_checker(exercise_type, pose_landmarks, bending_leg=None):
             # Check if at least one shoulder is higher than corresponding hip
             if (left_shoulder_y < left_hip_y) or (right_shoulder_y < right_hip_y):
                 return "correct"
+            
 
-"""    left_hip = pose_landmarks[23]
-        left_knee = pose_landmarks[25]
-        left_ankle = pose_landmarks[27]
+    elif exercise_type == "jumpingjack":
+        left_shoulder = pose_landmarks[11]
+        left_elbow = pose_landmarks[13]
+        left_wrist = pose_landmarks[15]
 
+        right_shoulder = pose_landmarks[12]
+        right_elbow = pose_landmarks[14]
+        right_wrist = pose_landmarks[16]
+
+        left_hip = pose_landmarks[23]
         right_hip = pose_landmarks[24]
+
+        left_knee = pose_landmarks[25]
         right_knee = pose_landmarks[26]
+
+        left_ankle = pose_landmarks[27]
         right_ankle = pose_landmarks[28]
 
-        left_angle = calculate_angle(left_hip, left_knee, left_ankle)
-        right_angle = calculate_angle(right_hip, right_knee, right_ankle)
+        left_arm_angle = calculate_angle(left_hip, left_shoulder, left_elbow)
+        right_arm_angle = calculate_angle(right_hip, right_shoulder, right_elbow)  # Modified per request
+        
+        left_leg_angle = calculate_angle(left_hip, left_knee, left_ankle)
+        right_leg_angle = calculate_angle(right_hip, right_knee, right_ankle)
 
-        # we assume the leg with the smaller knee angle is the bent one
-        bending_leg_angle = min(left_angle, right_angle)
+        # average hip point
+        mid_hip = (
+            (left_hip[0] + right_hip[0]) / 2,
+            (left_hip[1] + right_hip[1]) / 2
+        )
+        leg_spread_angle = calculate_angle(left_knee, mid_hip, right_knee)
 
-        if 70 <= bending_leg_angle <= 105:
-            return "correct"
-        else:
-            return "incorrect"
-"""
+        feedback = []
+        is_correct = True
+
+        if not (80 <= left_arm_angle <= 180):
+            feedback.append("❌ Left arm not raised enough")
+            is_correct = False
+        if not (80 <= right_arm_angle <= 180):
+            feedback.append("❌ Right arm not raised enough")
+            is_correct = False
+        if leg_spread_angle < 35:
+            feedback.append("❌ Legs not spread enough")
+            is_correct = False
+
+#        if not (150 <= left_leg_angle <= 180):
+#           feedback.append("❌ Left leg not straight/spread")
+#            is_correct = False
+#        if not (150 <= right_leg_angle <= 180):
+#            feedback.append("❌ Right leg not straight/spread")
+#            is_correct = False
+
+
+        avg_arm_angle = (left_arm_angle + right_arm_angle) / 2
+        return feedback, is_correct, avg_arm_angle
+
+    else:
+        return ["Unknown exercise"]
