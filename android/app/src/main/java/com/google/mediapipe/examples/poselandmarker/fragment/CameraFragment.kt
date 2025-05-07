@@ -25,7 +25,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.content.Context
-import android.widget.AdapterView
 import android.widget.Button
 import android.widget.Toast
 import androidx.camera.core.Preview
@@ -45,7 +44,7 @@ import com.google.mediapipe.examples.poselandmarker.R
 import com.google.mediapipe.examples.poselandmarker.TFLiteClassifier
 import com.google.mediapipe.examples.poselandmarker.databinding.FragmentCameraBinding
 import com.google.mediapipe.tasks.vision.core.RunningMode
-import com.google.mediapipe.examples.poselandmarker.WorkoutEntry
+import com.google.mediapipe.examples.poselandmarker.CorrectionChecker
 import com.google.mediapipe.examples.poselandmarker.HomeActivity
 import com.google.mediapipe.examples.poselandmarker.MainActivity
 import java.text.SimpleDateFormat
@@ -77,6 +76,7 @@ class CameraFragment : Fragment(), PoseLandmarkerHelper.LandmarkerListener {
 
     /** Blocking ML operations are performed using this executor */
     private lateinit var backgroundExecutor: ExecutorService
+    private lateinit var correctionChecker: CorrectionChecker
 
     override fun onResume() {
         super.onResume()
@@ -139,6 +139,7 @@ class CameraFragment : Fragment(), PoseLandmarkerHelper.LandmarkerListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         // Initialize our background executor
         backgroundExecutor = Executors.newSingleThreadExecutor()
 
@@ -160,6 +161,10 @@ class CameraFragment : Fragment(), PoseLandmarkerHelper.LandmarkerListener {
                 poseLandmarkerHelperListener = this
             )
         }
+
+
+// In onViewCreated or somewhere appropriate:
+        correctionChecker = CorrectionChecker()
         poseClassifier = TFLiteClassifier(requireContext())
         // Attach listeners to UI control widgets
 //        initBottomSheetControls()
@@ -479,8 +484,10 @@ class CameraFragment : Fragment(), PoseLandmarkerHelper.LandmarkerListener {
                     val predictedIndex = output.indices.maxByOrNull { output[it] } ?: -1
                     label = poseClassifier.labels[predictedIndex]
 
-
+                    val (isCorrect, feedback) = correctionChecker.evaluate(label, input)
                     fragmentCameraBinding.labelTextt.text = "Detected Pose: $label"
+                    fragmentCameraBinding.feedbackTextt.text = "Form Feedback: $feedback"
+
                     val session = requireContext().getSharedPreferences("UserSession", Context.MODE_PRIVATE)
                     val username = session.getString("username", null)
 

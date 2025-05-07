@@ -40,17 +40,17 @@ class RecentActivity : AppCompatActivity() {
                             val date = workoutSnapshot.child("date").getValue(String::class.java) ?: "No date"
                             val time = workoutSnapshot.child("time").getValue(Int::class.java) ?: 0
                             val labelToIndex = mapOf(
-                                "standing" to "0",
-                                "squat" to "1",
-                                "plank" to "2",
-                                "jumpingjacks" to "3",
-                                "crunch" to "4",
-                                "forwardbend" to "5",
-                                "lunge" to "6"
+                                "0" to "standing",
+                                "1" to "squat",
+                                 "2" to "plank",
+                                "3" to "jumpingjacks",
+                                "4" to "crunch",
+                                "5" to "forwardbend",
+                                "6" to "lunge"
                             )
                             val counts = countSnapshot.children.joinToString(separator = "\n") { entry ->
                                 val index = entry.key ?: "?"
-                                val exercise = labelToIndex[index] ?: "Unknown"
+                                val exercise = labelToIndex[index] ?: index
                                 val reps = entry.getValue(Int::class.java) ?: 0
                                 "$exercise: $reps reps"
                             }

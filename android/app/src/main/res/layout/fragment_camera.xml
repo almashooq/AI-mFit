@@ -30,16 +30,48 @@
         android:id="@+id/overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-    <TextView
-        android:id="@+id/labelTextt"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/textContainer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Detected Pose: "
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:layout_alignParentStart="true">
+
+        <!-- Detected Pose Label -->
+        <TextView
+            android:id="@+id/labelTextt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detected Pose:"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <!-- Pose Result (e.g., Squat) -->
+        <TextView
+            android:id="@+id/poseResultText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="4dp" />
+
+        <!-- Form Feedback -->
+        <TextView
+            android:id="@+id/feedbackTextt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Form Feedback:"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_marginTop="12dp" />
+    </LinearLayout>
+
+
     <Button
         android:id="@+id/endWorkoutButton"
         android:layout_width="250dp"
