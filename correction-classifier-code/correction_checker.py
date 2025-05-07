@@ -157,16 +157,36 @@ def correction_checker(exercise_type, pose_landmarks, bending_leg=None):
             feedback.append("❌ Legs not spread enough")
             is_correct = False
 
-#        if not (150 <= left_leg_angle <= 180):
-#           feedback.append("❌ Left leg not straight/spread")
-#            is_correct = False
-#        if not (150 <= right_leg_angle <= 180):
-#            feedback.append("❌ Right leg not straight/spread")
-#            is_correct = False
-
-
         avg_arm_angle = (left_arm_angle + right_arm_angle) / 2
         return feedback, is_correct, avg_arm_angle
+
+
+
+    elif exercise_type == "plank":
+        left_shoulder = pose_landmarks[11]
+        left_hip = pose_landmarks[23]
+        left_knee = pose_landmarks[25]
+
+        right_shoulder = pose_landmarks[12]
+        right_hip = pose_landmarks[24]
+        right_knee = pose_landmarks[26]
+
+        left_angle = calculate_angle(left_shoulder, left_hip, left_knee)
+        right_angle = calculate_angle(right_shoulder, right_hip, right_knee)
+
+        feedback = []
+        is_correct = True
+
+        if not (130 <= left_angle <= 180):
+            feedback.append("❌ Left side not straight enough")
+            is_correct = False
+
+        if not (130 <= right_angle <= 180):
+            feedback.append("❌ Right side not straight enough")
+            is_correct = False
+
+        return feedback, is_correct, (left_angle, right_angle)
+
 
     else:
         return ["Unknown exercise"]
