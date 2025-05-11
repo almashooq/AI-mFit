@@ -6,7 +6,7 @@ mp_pose = mp.solutions.pose
 pose = mp_pose.Pose()
 mp_drawing = mp.solutions.drawing_utils
 
-cap = cv2.VideoCapture("lunge_6.mp4")
+cap = cv2.VideoCapture("lunge_4.mp4")
 
 STANDING_THRESHOLD = 150
 LUNGING_ANGLE_MIN = 70
