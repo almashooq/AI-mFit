@@ -53,7 +53,7 @@ class CorrectionChecker {
         }
         return Triple(landmarks[index * 2], landmarks[index * 2 + 1], 0f)
     }
-
+/*=================================================================================================================================*/
     private fun checkSquat(landmarks: FloatArray): Pair<Boolean, String> {
         val (leftHipX, leftHipY, _) = getPoint(landmarks, 23)
         val (leftKneeX, leftKneeY, _) = getPoint(landmarks, 25)
@@ -70,7 +70,7 @@ class CorrectionChecker {
         return correct to (if (correct) "Correct: " else "Incorrect: ") +
                 "Squat angles - Left: %.1f°, Right: %.1f°".format(leftAngle, rightAngle)
     }
-
+/*=================================================================================================================================*/
     private fun checkLunge(landmarks: FloatArray): Pair<Boolean, String> {
         val (hipX, hipY, _) = getPoint(landmarks, 24)
         val (kneeX, kneeY, _) = getPoint(landmarks, 26)
@@ -80,7 +80,7 @@ class CorrectionChecker {
         val correct = angle in 70.0..105.0
         return correct to (if (correct) "Correct: " else "Incorrect: ") + "Lunge knee angle: %.1f°".format(angle)
     }
-
+/*=================================================================================================================================*/
     private fun checkForwardBend(landmarks: FloatArray): Pair<Boolean, String> {
         val (leftShoulderX, leftShoulderY, _) = getPoint(landmarks, 11)
         val (leftHipX, leftHipY, _) = getPoint(landmarks, 23)
@@ -103,7 +103,7 @@ class CorrectionChecker {
         return correct to (if (correct) "Correct: " else "Incorrect: ") +
                 "Forward bend - Hip flexion: %.1f°, Knee angle: %.1f°".format(hipFlexion, kneeAngle)
     }
-
+/*=================================================================================================================================*/
     private fun checkCrunch(landmarks: FloatArray): Pair<Boolean, String> {
         val (leftShoulderX, leftShoulderY, _) = getPoint(landmarks, 11)
         val (leftHipX, leftHipY, _) = getPoint(landmarks, 23)
@@ -122,7 +122,7 @@ class CorrectionChecker {
         }
         return correct to (if (correct) "Correct: " else "Incorrect: ") + "Crunch curl angle: %.1f°".format(avg)
     }
-
+/*=================================================================================================================================*/
     private fun checkJumpingJacks(landmarks: FloatArray): Pair<Boolean, String> {
         val (leftHipX, leftHipY, _) = getPoint(landmarks, 23)
         val (leftShoulderX, leftShoulderY, _) = getPoint(landmarks, 11)
@@ -163,7 +163,7 @@ class CorrectionChecker {
 
         return isCorrect to (if (isCorrect) "Correct: Jumping jack form" else "Incorrect:\n" + feedback.joinToString("\n"))
     }
-
+/*=================================================================================================================================*/
     private fun checkPlank(landmarks: FloatArray): Pair<Boolean, String> {
         val (leftShoulderX, leftShoulderY, _) = getPoint(landmarks, 11)
         val (leftHipX, leftHipY, _) = getPoint(landmarks, 23)
