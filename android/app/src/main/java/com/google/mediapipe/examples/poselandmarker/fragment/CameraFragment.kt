@@ -74,6 +74,13 @@ class CameraFragment : Fragment(), PoseLandmarkerHelper.LandmarkerListener {
     private var cameraProvider: ProcessCameraProvider? = null
     private var cameraFacing = CameraSelector.LENS_FACING_BACK
 
+    
+    private val predictionBuffer = ArrayDeque<String>()
+    private val bufferSize = 10
+
+    private var isReadyForRep = false
+    private var lastStableLabel: String? = null
+
     /** Blocking ML operations are performed using this executor */
     private lateinit var backgroundExecutor: ExecutorService
     private lateinit var correctionChecker: CorrectionChecker
@@ -484,9 +491,94 @@ class CameraFragment : Fragment(), PoseLandmarkerHelper.LandmarkerListener {
                     val predictedIndex = output.indices.maxByOrNull { output[it] } ?: -1
                     label = poseClassifier.labels[predictedIndex]
 
-                    val (isCorrect, feedback) = correctionChecker.evaluate(label, input)
-                    fragmentCameraBinding.labelTextt.text = "Detected Pose: $label"
-                    fragmentCameraBinding.feedbackTextt.text = "Form Feedback: $feedback"
+//                    val (isCorrect, feedback) = correctionChecker.evaluate(label, input)
+//                    fragmentCameraBinding.labelTextt.text = "Detected Pose: $label"
+//                    fragmentCameraBinding.feedbackTextt.text = "Form Feedback: $feedback"
+
+
+
+
+                    // Add prediction to buffer
+                    predictionBuffer.addLast(predictedLabel)
+                    if (predictionBuffer.size > bufferSize) {
+                        predictionBuffer.removeFirst()
+                    }
+
+                    // Get stable label
+                    val stableLabel = predictionBuffer
+                        .groupingBy { it }
+                        .eachCount()
+                        .maxByOrNull { it.value }
+                        ?.key ?: return@runOnUiThread
+
+                    // Avoid rechecking same label
+                    if (stableLabel == lastStableLabel) return@runOnUiThread
+
+                    // ========== ⬇️ READY POSE CHECK PER EXERCISE ========== //
+                    val isPoseReady = when (stableLabel.lowercase()) {
+                        "squat", "lunge", "forwardbend", "crunch" -> {
+                            val hip = landmarks[23]
+                            val knee = landmarks[25]
+                            val ankle = landmarks[27]
+                            val angle = correctionChecker.calculateAngle(
+                                hip.x().toFloat(), hip.y().toFloat(),
+                                knee.x().toFloat(), knee.y().toFloat(),
+                                ankle.x().toFloat(), ankle.y().toFloat()
+                            )
+                            angle > 160.0 // standing position
+                        }
+
+                        "plank" -> {
+                            val shoulder = landmarks[11]
+                            val hip = landmarks[23]
+                            val knee = landmarks[25]
+                            val angle = correctionChecker.calculateAngle(
+                                shoulder.x().toFloat(), shoulder.y().toFloat(),
+                                hip.x().toFloat(), hip.y().toFloat(),
+                                knee.x().toFloat(), knee.y().toFloat()
+                            )
+                            angle in 130.0..180.0 // flat back
+                        }
+
+                        "jumpingjacks" -> {
+                            true // always ready — fast dynamic movement
+                        }
+
+                        else -> false
+                    }
+                    // ========== ⬆️ READY POSE CHECK PER EXERCISE ========== //
+
+                    if (isPoseReady) {
+                        val (isCorrect, feedback) = correctionChecker.evaluate(stableLabel, input)
+                        fragmentCameraBinding.labelTextt.text = "Detected Pose: $stableLabel"
+                        fragmentCameraBinding.feedbackTextt.text = "Form Feedback: $feedback"
+
+                        val session = requireContext().getSharedPreferences("UserSession", Context.MODE_PRIVATE)
+                        val username = session.getString("username", null)
+
+                        if (username != null && username != "guest") {
+                            val workoutPrefs = requireContext().getSharedPreferences("CurrentWorkout", Context.MODE_PRIVATE)
+                            val now = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault()).format(Date())
+
+                            val labelKey = "count_$stableLabel"
+                            val prevCount = workoutPrefs.getInt(labelKey, 0)
+                            workoutPrefs.edit()
+                                .putInt(labelKey, prevCount + 1)
+                                .putString("start_time", now)
+                                .apply()
+                        }
+
+                        lastStableLabel = stableLabel
+                    }
+
+
+
+
+
+
+
+
+
 
                     val session = requireContext().getSharedPreferences("UserSession", Context.MODE_PRIVATE)
                     val username = session.getString("username", null)
