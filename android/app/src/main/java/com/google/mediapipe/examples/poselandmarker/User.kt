@@ -14,5 +14,5 @@ data class User(
     val height: Int = 0,
     val weight: Int = 0,
     val picture: String = "dummyProfile.png",
-    val statistics: Map<String, Statistic> = emptyMap()
+    val statistics: List<Statistic> = listOf(Statistic())
 )

@@ -60,59 +60,40 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginUser(username: String, password: String) {
-        databaseReference.child(username)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        val passwordInDb =
-                            dataSnapshot.child("password").getValue(String::class.java)
+        databaseReference.child(username).addListenerForSingleValueEvent(object : ValueEventListener {
 
-                        if (passwordInDb == password) {
-                            val email =
-                                dataSnapshot.child("email").getValue(String::class.java) ?: ""
-                            val age = dataSnapshot.child("age").getValue(Int::class.java) ?: 0
-                            val gender =
-                                dataSnapshot.child("gender").getValue(String::class.java) ?: ""
-                            val height = dataSnapshot.child("height").getValue(Int::class.java) ?: 0
-                            val weight = dataSnapshot.child("weight").getValue(Int::class.java) ?: 0
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    val userData = dataSnapshot.getValue(User::class.java)
+                    if (userData != null && userData.password == password) {
 
-                            val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
-                            sharedPref.edit().apply {
-                                putString("username", username)
-                                putString("password", passwordInDb)
-                                putString("email", email)
-                                putInt("age", age)
-                                putString("gender", gender)
-                                putInt("height", height)
-                                putInt("weight", weight)
-                                apply()
-                            }
+                        // Save to SharedPreferences
+                        val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
+                        val editor = sharedPref.edit()
+                        editor.putString("username", username)
+                        editor.putString("password", userData.password)
+                        editor.putString("email", userData.email)
+                        editor.putInt("age", userData.age)
+                        editor.putString("gender", userData.gender)
+                        editor.putInt("height", userData.height)
+                        editor.putInt("weight", userData.weight)
+                        editor.apply()
 
-                            Toast.makeText(
-                                this@LoginActivity,
-                                "Login successful",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
-                            finish()
-                        } else {
-                            Toast.makeText(this@LoginActivity, "Wrong password", Toast.LENGTH_SHORT)
-                                .show()
-                        }
+
+                        val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                        startActivity(intent)
+                        finish()
                     } else {
-                        Toast.makeText(this@LoginActivity, "User not found!", Toast.LENGTH_SHORT)
-                            .show()
+                        Toast.makeText(this@LoginActivity, "Login failed! Wrong password.", Toast.LENGTH_SHORT).show()
                     }
+                } else {
+                    Toast.makeText(this@LoginActivity, "User not found!", Toast.LENGTH_SHORT).show()
                 }
+            }
 
-                override fun onCancelled(error: DatabaseError) {
-                    Toast.makeText(
-                        this@LoginActivity,
-                        "Database Error: ${error.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            })
+            override fun onCancelled(databaseError: DatabaseError) {
+                Toast.makeText(this@LoginActivity, "Database Error: ${databaseError.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }
-

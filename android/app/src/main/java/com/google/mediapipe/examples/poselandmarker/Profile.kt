@@ -1,7 +1,6 @@
 package com.google.mediapipe.examples.poselandmarker
 
 import android.os.Bundle
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.google.mediapipe.examples.poselandmarker.databinding.ActivityProfileBinding
 
@@ -35,14 +34,5 @@ class ProfileActivity : AppCompatActivity() {
         binding.tvheight.setText("HEIGHT: ${height}CM")
         binding.tvweight.setText("WEIGHT: ${weight}KG")
         binding.tvgender.setText("GENDER: $gender")
-        binding.logoutButton.setOnClickListener {
-            val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
-            sharedPref.edit().clear().apply()
-
-            val intent = Intent(this, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            finish()
-        }
     }
 }

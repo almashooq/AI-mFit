@@ -2,7 +2,6 @@ package com.google.mediapipe.examples.poselandmarker
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.mediapipe.examples.poselandmarker.databinding.ActivityHomeBinding
 
@@ -20,8 +19,7 @@ class HomeActivity : AppCompatActivity() {
 //        binding.toolbar.setNavigationOnClickListener {
 //            finish()
 //        }
-        val username = getSharedPreferences("UserSession", MODE_PRIVATE).getString("username", null)
-        Toast.makeText(this, "Logged in as: $username", Toast.LENGTH_SHORT).show()
+
         binding.btnwork.setOnClickListener {
             val intent = Intent(this, PreworkoutActivity::class.java)
             startActivity(intent)
@@ -36,6 +34,12 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val sharedPref = getSharedPreferences("UserSession", MODE_PRIVATE)
+        sharedPref.edit().clear().apply()
     }
 
 }
