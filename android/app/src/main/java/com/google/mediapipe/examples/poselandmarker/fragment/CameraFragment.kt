@@ -332,23 +332,22 @@ class CameraFragment : Fragment(), PoseLandmarkerHelper.LandmarkerListener {
                     val (isCorrect, feedback) = correctionChecker.evaluate(label, averagedInput)
                     fragmentCameraBinding.labelTextt.text = "Detected Pose: $label"
                     fragmentCameraBinding.feedbackTextt.text = "Form Feedback: $feedback"
+                    if (!isCorrect) {
+                        val session = requireContext().getSharedPreferences("UserSession", Context.MODE_PRIVATE)
+                        val username = session.getString("username", null)
 
-                    val session = requireContext().getSharedPreferences("UserSession", Context.MODE_PRIVATE)
-                    val username = session.getString("username", null)
+                        if (username != null && username != "guest") {
+                            val workoutPrefs = requireContext().getSharedPreferences("CurrentWorkout", Context.MODE_PRIVATE)
+                            val now = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault()).format(Date())
 
-                    if (username != null && username != "guest") {
-                        val workoutPrefs = requireContext().getSharedPreferences("CurrentWorkout", Context.MODE_PRIVATE)
-                        val now = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault()).format(Date())
-
-                        val labelKey = "count_$label"
-                        val prevCount = workoutPrefs.getInt(labelKey, 0)
-                        workoutPrefs.edit()
-                            .putInt(labelKey, prevCount + 1)
-                            .putString("start_time", now)
-                            .apply()
-
+                            val labelKey = "count_$label"
+                            val prevCount = workoutPrefs.getInt(labelKey, 0)
+                            workoutPrefs.edit()
+                                .putInt(labelKey, prevCount + 1)
+                                .putString("start_time", now)
+                                .apply()
+                        }
                     }
-
                 }
 
 
