@@ -66,9 +66,12 @@ class CorrectionChecker {
         val rightAngle = calculateAngle(rightHipX, rightHipY, rightKneeX, rightKneeY, rightAnkleX, rightAnkleY)
 
         val correct = leftAngle in 20.0..140.0 || rightAngle in 20.0..140.0
+        val feedback = mutableListOf<String>()
+        if (leftAngle > 140 || rightAngle > 140) {
+            feedback.add("❌ Bend you knees more")
+        }
 
-        return correct to (if (correct) "Correct: " else "Incorrect: ") +
-                "Squat angles - Left: %.1f°, Right: %.1f°".format(leftAngle, rightAngle)
+        return correct to (if (correct) "Correct!" else "Incorrect: ") + feedback.joinToString("\n")
     }
 /*=================================================================================================================================*/
     private fun checkLunge(landmarks: FloatArray): Pair<Boolean, String> {
@@ -76,9 +79,16 @@ class CorrectionChecker {
         val (kneeX, kneeY, _) = getPoint(landmarks, 26)
         val (ankleX, ankleY, _) = getPoint(landmarks, 28)
 
+        val feedback = mutableListOf<String>()
         val angle = calculateAngle(hipX, hipY, kneeX, kneeY, ankleX, ankleY)
         val correct = angle in 70.0..105.0
-        return correct to (if (correct) "Correct: " else "Incorrect: ") + "Lunge knee angle: %.1f°".format(angle)
+        if (angle > 105) {
+            feedback.add("❌ Bend your knees more")
+        }
+        if (angle < 70) {
+            feedback.add("❌ Extend your knees more")
+        }
+        return correct to (if (correct) "Correct!" else "Incorrect: ") + feedback.joinToString("\n")
     }
 /*=================================================================================================================================*/
     private fun checkForwardBend(landmarks: FloatArray): Pair<Boolean, String> {
@@ -99,9 +109,19 @@ class CorrectionChecker {
         val rightKnee = calculateAngle(rightHipX, rightHipY, rightKneeX, rightKneeY, rightAnkleX, rightAnkleY)
         val kneeAngle = (leftKnee + rightKnee) / 2
 
+        val feedback = mutableListOf<String>()
         val correct = hipFlexion in 30.0..90.0 && kneeAngle in 150.0..180.0
-        return correct to (if (correct) "Correct: " else "Incorrect: ") +
-                "Forward bend - Hip flexion: %.1f°, Knee angle: %.1f°".format(hipFlexion, kneeAngle)
+        if (hipFlexion > 90) {
+            feedback.add("❌ Lower your upper body")
+        }
+        if (hipFlexion < 30) {
+            feedback.add("❌ Raise your upper body")
+        }
+        if (kneeAngle > 180 || kneeAngle < 150) {
+            feedback.add("❌ Straighten your knees")
+        }
+    
+        return correct to (if (correct) "Correct!" else "Incorrect: ") + feedback.joinToString("\n")
     }
 /*=================================================================================================================================*/
     private fun checkCrunch(landmarks: FloatArray): Pair<Boolean, String> {
@@ -120,8 +140,12 @@ class CorrectionChecker {
         if (avg > 130) {
             feedback.add("❌ Raise your upper body")
         }
-        return correct to (if (correct) "Correct: " else "Incorrect: ") + "Crunch curl angle: %.1f°".format(avg)
+        if (avg < 100) {
+            feedback.add("❌ Lower your upper body")
+        }
+        return correct to (if (correct) "Correct!" else "Incorrect: ") + feedback.joinToString("\n")
     }
+    //+ "Crunch curl angle: %.1f°".format(avg)
 /*=================================================================================================================================*/
     private fun checkJumpingJacks(landmarks: FloatArray): Pair<Boolean, String> {
         val (leftHipX, leftHipY, _) = getPoint(landmarks, 23)
@@ -161,7 +185,7 @@ class CorrectionChecker {
             isCorrect = false
         }
 
-        return isCorrect to (if (isCorrect) "Correct: Jumping jack form" else "Incorrect:\n" + feedback.joinToString("\n"))
+        return isCorrect to (if (isCorrect) "Correct!" else "Incorrect:\n" + feedback.joinToString("\n"))
     }
 /*=================================================================================================================================*/
     private fun checkPlank(landmarks: FloatArray): Pair<Boolean, String> {
@@ -187,6 +211,6 @@ class CorrectionChecker {
             isCorrect = false
         }
 
-        return isCorrect to (if (isCorrect) "Correct: Plank form" else "Incorrect:\n" + feedback.joinToString("\n"))
+        return isCorrect to (if (isCorrect) "Correct!" else "Incorrect:\n" + feedback.joinToString("\n"))
     }
 }
